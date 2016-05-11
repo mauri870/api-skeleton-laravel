@@ -1,0 +1,27 @@
+{
+  "name": "example",
+  "version": "0.0.0",
+  "authors": [
+    "author"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.0",
+    "font-awesome": "^4.0",
+    "particles.js": "https://github.com/VincentGarreau/particles.js.git#~2.0.0",
+    "sweetalert": "~1.1",
+    "eonasdan-bootstrap-datetimepicker": "~4.17"
+  }
+}

@@ -1,0 +1,36 @@
+web:
+  container_name: nginx
+  image: ttaranto/docker-nginx-php7
+  ports:
+    - "80:80"
+  volumes:
+    - ./:/var/www/
+    - ./nginx-sites:/etc/nginx/sites-enabled
+  #links:
+    #- pgsql:pgsql
+    #- redis:redis
+    #- mysql:mysql
+
+#mysql:
+#  container_name: mariadb
+#  image: mariadb:latest
+#  environment:
+#    - MYSQL_DATABASE=db
+#    - MYSQL_USER=admin
+#    - MYSQL_PASSWORD=12345678
+#  ports:
+#    - "3306:3306"
+
+#pgsql:
+#  container_name: postgres
+#  image: postgres:latest
+#  environment:
+#    - POSTGRES_DB=db
+#    - POSTGRES_USER=admin
+#    - POSTGRES_PASSWORD=12345678
+#  ports:
+#    - "5432:5432"
+
+#redis:
+#  container_name: redis
+#  image: redis:latest

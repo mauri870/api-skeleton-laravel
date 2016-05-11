@@ -1,0 +1,15 @@
+localhost:80
+root public
+fastcgi / /var/run/php/php7.0-fpm.sock {
+    ext   .php
+    split .php
+    index index.php
+}
+rewrite {
+     r .*
+     ext /
+     to /index.php?{query}
+}
+gzip
+log storage/logs/caddy.log
+errors storage/logs/errors.log
