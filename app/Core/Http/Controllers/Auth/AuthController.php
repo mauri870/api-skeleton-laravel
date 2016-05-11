@@ -2,66 +2,61 @@
 
 namespace App\Core\Http\Controllers\Auth;
 
-use App\Domains\Users\User;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 use App\Core\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
-    protected $loginPath = '/login';
-    protected $redirectPath = '/dashboard';
-    /*
-    |--------------------------------------------------------------------------
-    | Registration & Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-    | a simple trait to add these behaviors. Why don't you explore it?
-    |
-    */
-
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-
     /**
-     * Create a new authentication controller instance.
+     * Authenticate a user
      *
-     * @return void
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function __construct()
+    public function authenticate(Request $request)
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+
+        try {
+            if (! $token = JWTAuth::attempt($credentials)) {
+                return response()->json(['error' => 'invalid_credentials'], 401);
+            }
+        } catch (JWTException $e) {
+            return response()->json(['error' => 'could_not_create_token'], 500);
+        }
+
+        return response()->json(compact('token'));
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * Register a new user
      *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    protected function validator(array $data)
+    public function register(Request $request)
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
-    }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        $credentials = $request->only('name', 'email', 'password');
+
+        $user = \App\Domains\Users\User::create($credentials);
+
+        // Todo Send registration email, fire register event, etc
+
+        $token = JWTAuth::fromUser($user);
+
+        return response()->json(compact('token'));
     }
 }

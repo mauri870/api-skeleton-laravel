@@ -145,15 +145,15 @@ return [
          * Application Service Providers...
          */
         App\Core\Providers\CoreServiceProvider::class,
-        App\Core\Providers\AuthServiceProvider::class,
         App\Core\Providers\EventServiceProvider::class,
         App\Core\Providers\RouteServiceProvider::class,
-
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        Dingo\Api\Provider\LaravelServiceProvider::class,
+        App\Core\Providers\AuthServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Collective\Remote\RemoteServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
-	    Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        Dingo\Api\Provider\LaravelServiceProvider::class
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     ],
 
     /*
@@ -205,6 +205,8 @@ return [
 
         'SSH' => Collective\Remote\RemoteFacade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class
     ],
 
 ];
