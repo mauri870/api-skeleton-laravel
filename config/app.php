@@ -153,6 +153,7 @@ return [
         Collective\Remote\RemoteServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
 	    Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Dingo\Api\Provider\LaravelServiceProvider::class
     ],
 
     /*
