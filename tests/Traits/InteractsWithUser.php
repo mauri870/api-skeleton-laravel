@@ -17,14 +17,16 @@ trait InteractsWithUser
      * @return bool
      */
     public function insertTestUser($name = 'test', $email = 'test@test.com', $password = '12345678'){
-        if(User::all()->count() == 0){
+        if (User::all()->count() == 0) {
             User::create(
                 [
                     'name'=>$name,
                     'email'=>$email,
                     'password'=>bcrypt($password),
                     'created_at'=>Carbon::now(),
-                    'updated_at'=>Carbon::now()]);
+                    'updated_at'=>Carbon::now()
+                ]
+            );
         }
 
         return true;
