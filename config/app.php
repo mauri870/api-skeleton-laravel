@@ -152,8 +152,9 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Collective\Remote\RemoteServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
-	    Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        Dingo\Api\Provider\LaravelServiceProvider::class
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Dingo\Api\Provider\LaravelServiceProvider::class,
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class
     ],
 
     /*
@@ -205,6 +206,8 @@ return [
 
         'SSH' => Collective\Remote\RemoteFacade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class
     ],
 
 ];
