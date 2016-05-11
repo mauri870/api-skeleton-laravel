@@ -17,8 +17,7 @@ class Kernel extends HttpKernel
         \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-        \App\Core\Http\Middleware\VerifyCsrfToken::class,
-        \Krucas\Notification\Middleware\NotificationMiddleware::class
+        \App\Core\Http\Middleware\VerifyCsrfToken::class
     ];
 
     /**
@@ -30,7 +29,6 @@ class Kernel extends HttpKernel
         'auth' => \App\Core\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \App\Core\Http\Middleware\RedirectIfAuthenticated::class,
-        'checkTokenExists' => \App\Core\Http\Middleware\CheckTokenExists::class,
-        'shareDashVarsToView' => \App\Core\Http\Middleware\ShareDashVarsToView::class,
+        'checkTokenExists' => \App\Core\Http\Middleware\CheckTokenExists::class
     ];
 }

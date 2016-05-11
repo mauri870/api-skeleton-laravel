@@ -1,5 +1,4 @@
 <?php
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 
 return [
 
@@ -149,47 +148,11 @@ return [
         App\Core\Providers\AuthServiceProvider::class,
         App\Core\Providers\EventServiceProvider::class,
         App\Core\Providers\RouteServiceProvider::class,
-        App\Applications\Dashboard\Providers\DashboardServiceProvider::class,
-        App\Applications\Site\Providers\SiteServiceProvider::class,
 
-        /*
-         * Laravel Collective
-         * */
-        Collective\Html\HtmlServiceProvider::class,
-
-        /*
-         * reCAPTCHA
-         * */
-        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
-
-        /*
-         * Debugbar Laravel
-         * */
         Barryvdh\Debugbar\ServiceProvider::class,
-
-        /*
-         * Ssh Laravel collective
-         * */
         Collective\Remote\RemoteServiceProvider::class,
-
-        /*
-         * Notification
-         * */
-        Krucas\Notification\NotificationServiceProvider::class,
-
-        /*
-         * L5-Repository
-         * */
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
-        /*
-         * Barryvdh\LaravelIdeHelper
-         **/
 	    Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-
-        /*
-         * Laracasts/Flash
-         */
-        Laracasts\Flash\FlashServiceProvider::class
     ],
 
     /*
@@ -238,23 +201,9 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
-        'Notify'    => \App\Applications\Dashboard\Notifications\Facades\Notify::class,
 
-        //Collective
-        'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class,
-
-        //Collective Remote
         'SSH' => Collective\Remote\RemoteFacade::class,
-
-        //Debugbar
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
-
-        //Notification Flash
-        'Notification' => Krucas\Notification\Facades\Notification::class,
-
-        //Laracasts Flash
-        'Flash' => 'Laracasts\Flash\Flash'
     ],
 
 ];
