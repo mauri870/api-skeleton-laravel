@@ -11,7 +11,8 @@
         "barryvdh/laravel-debugbar": "^2.0",
         "laravelcollective/remote": "5.1.*",
         "prettus/l5-repository": "^2.1",
-        "barryvdh/laravel-ide-helper": "^2.1"
+        "barryvdh/laravel-ide-helper": "^2.1",
+        "dingo/api": "1.0.*@dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
