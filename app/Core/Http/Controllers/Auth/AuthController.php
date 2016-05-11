@@ -34,4 +34,29 @@ class AuthController extends Controller
 
         return response()->json(compact('token'));
     }
+
+    /**
+     * Register a new user
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function register(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        $credentials = $request->only('name', 'email', 'password');
+
+        $user = \App\Domains\Users\User::create($credentials);
+
+        // Todo Send registration email, fire register event, etc
+
+        $token = JWTAuth::fromUser($user);
+
+        return response()->json(compact('token'));
+    }
 }
