@@ -1,8 +1,8 @@
 {
-    "name": "digitalserra/laravel-custom",
-    "description": "Laravel custom package with pre-installed components",
+    "name": "digitalserra/meeting-app",
+    "description": "Meeting application",
     "keywords": ["framework", "laravel"],
-    "license": "MIT",
+    "license": "proprietary",
     "type": "project",
     "require": {
         "php": ">=5.5.9",
@@ -55,5 +55,10 @@
     },
     "config": {
         "preferred-install": "dist"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "0.1-dev"
+        }
     }
 }
