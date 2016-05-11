@@ -13,12 +13,19 @@ class Application extends BaseApplication
     const APP_VERSION = '0.1-dev';
 
     /**
+     * The app name.
+     *
+     * @var string
+     */
+    const APP_NAME = 'Meeting app';
+
+    /**
      * Return the application version
      *
      * @return string
      */
     public function version()
     {
-        return parent::version().PHP_EOL.'<info>Meeting App</info> '.self::APP_VERSION;
+        return parent::version().PHP_EOL.'<info>'.self::APP_NAME.'</info> '.self::APP_VERSION;
     }
 }
