@@ -1,5 +1,4 @@
 <?php
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 
 return [
 
