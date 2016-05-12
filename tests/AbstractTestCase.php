@@ -23,7 +23,7 @@ abstract class AbstractTestCase extends TestCase
     /**
      * Creates the application.
      *
-     * @return \Illuminate\Foundation\Application
+     * @return \App\Core\Foundation\Application
      */
     public function createApplication()
     {
