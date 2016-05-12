@@ -2,6 +2,7 @@
 
 namespace App\Api\V1\Http\Controllers\Auth;
 
+use Dingo\Api\Facade\API;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Core\Http\Controllers\Controller;
@@ -49,5 +50,15 @@ class AuthController extends Controller
         $token = JWTAuth::fromUser($user);
 
         return response()->json(compact('token'));
+    }
+
+    /**
+     * Return success if is authenticated
+     *
+     * @return mixed
+     */
+    public function validateToken()
+    {
+        return API::response()->array(['status' => 'success'])->statusCode(200);
     }
 }
