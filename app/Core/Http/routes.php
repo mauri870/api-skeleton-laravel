@@ -9,6 +9,7 @@ $api->version('v1', function ($api) {
 
         $api->group(['middleware' => 'jwt.auth'], function ($api) {
             // Todo Implement Protected Routes
+            $api->get('validate_token', 'Auth\AuthController@validateToken');
         });
     });
 });
