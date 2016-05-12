@@ -26,6 +26,5 @@ class AuthTest extends ApiTestCase
                 'password' => 12345678,
             ]
         )->see('token');
-
     }
 }
