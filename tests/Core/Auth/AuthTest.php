@@ -6,25 +6,61 @@ use App\Tests\ApiTestCase;
 
 class AuthTest extends ApiTestCase
 {
-    public function test_can_register_a_user() {
-        $this->post('register',
-            [
-                'name' => 'New User',
-                'email' => 'new@new.com',
-                'password' => 12345678,
-            ]
-        )->see('token');
+    private $newUser;
+    private $loginUser;
 
-        $this->seeInDatabase('users',['name' => 'New User', 'email' => 'new@new.com']);
+    public function __construct()
+    {
+        parent::__construct();
 
+        $this->newUser = [
+            'name' => 'New User',
+            'email' => 'new@new.com',
+            'password' => 12345678,
+        ];
+
+        $this->loginUser = [
+            'email' => 'test@test.com',
+            'password' => 12345678
+        ];
     }
 
-    public function test_can_login_a_user() {
-        $this->post('login',
-            [
-                'email' => 'test@test.com',
-                'password' => 12345678,
-            ]
-        )->see('token');
+    public function test_can_register_a_user()
+    {
+        $response = $this->callAPI('POST', 'register', $this->newUser);
+
+        $this->assertResponseOk();
+        $this->assertIfTokenIsValid(json_decode($response->content())->token);
+        $this->seeInDatabase('users', $this->newUser);
+    }
+
+    public function test_can_register_a_user_with_not_valid_fields()
+    {
+        $wrong_fields = $this->newUser;
+        $wrong_fields['email'] = 'wrong.bad';
+
+        $response = $this->callAPI('POST', 'register', $wrong_fields)->content();
+
+        $this->assertTrue(array_key_exists('errors.email.0', array_dot(json_decode($response, 1))));
+        $this->assertResponseStatus(422);
+        $this->notSeeInDatabase('users', $wrong_fields);
+    }
+
+    public function test_can_login_a_user()
+    {
+        $response = $this->call('POST', 'login', $this->loginUser);
+
+        $this->assertResponseOk();
+        $this->assertIfTokenIsValid(json_decode($response->content())->token);
+    }
+
+    public function test_can_login_a_user_with_wrong_credentials()
+    {
+        $wrong_user = ['email' => 'wrong@user.com', 'password' => 'wrong_pass'];
+        $response = $this->call('POST', 'login', $wrong_user);
+
+        $this->seeJsonEquals(['error' => 'invalid_credentials'], $response->content());
+        $this->assertResponseStatus(401);
+        $this->notSeeInDatabase('users', $wrong_user);
     }
 }
