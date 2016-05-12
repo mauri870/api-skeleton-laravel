@@ -29,6 +29,8 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \App\Core\Http\Middleware\RedirectIfAuthenticated::class,
         'checkTokenExists' => \App\Core\Http\Middleware\CheckTokenExists::class,
-        'cors' => \Barryvdh\Cors\HandleCors::class
+        'cors' => \Barryvdh\Cors\HandleCors::class,
+        'jwt.auth' => \Tymon\JWTAuth\Middleware\GetUserFromToken::class,
+        'jwt.refresh' => \Tymon\JWTAuth\Middleware\RefreshToken::class
     ];
 }
