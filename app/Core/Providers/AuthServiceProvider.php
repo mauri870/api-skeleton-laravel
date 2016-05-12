@@ -25,8 +25,6 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(GateContract $gate)
     {
         $this->registerPolicies($gate);
-        app('Dingo\Api\Auth\Auth')->extend('jwt', function () {
-            return new \Dingo\Api\Auth\Provider\JWT(app('Tymon\JWTAuth\JWTAuth'));
-        });
+        //
     }
 }
