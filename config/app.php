@@ -154,6 +154,7 @@ return [
         Collective\Remote\RemoteServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class
     ],
 
     /*
