@@ -48,7 +48,7 @@ class AuthTest extends ApiTestCase
 
     public function test_can_login_a_user()
     {
-        $response = $this->call('POST', 'login', $this->loginUser);
+        $response = $this->callAPI('POST', 'login', $this->loginUser);
 
         $this->assertResponseOk();
         $this->assertIfTokenIsValid(json_decode($response->content())->token);
@@ -57,10 +57,20 @@ class AuthTest extends ApiTestCase
     public function test_can_login_a_user_with_wrong_credentials()
     {
         $wrong_user = ['email' => 'wrong@user.com', 'password' => 'wrong_pass'];
-        $response = $this->call('POST', 'login', $wrong_user);
+        $response = $this->callAPI('POST', 'login', $wrong_user);
 
         $this->seeJsonEquals(['error' => 'invalid_credentials'], $response->content());
         $this->assertResponseStatus(401);
+        $this->notSeeInDatabase('users', $wrong_user);
+    }
+
+    public function test_can_login_a_user_with_invalid_credentials()
+    {
+        $wrong_user = ['email' => 'wrong.user', 'password' => 'wrong_pass'];
+        $response = $this->callAPI('POST', 'login', $wrong_user)->content();
+
+        $this->assertTrue(array_key_exists('errors.email.0', array_dot(json_decode($response, 1))));
+        $this->assertResponseStatus(422);
         $this->notSeeInDatabase('users', $wrong_user);
     }
 }
