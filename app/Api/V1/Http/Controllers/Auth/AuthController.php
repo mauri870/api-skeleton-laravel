@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Core\Http\Controllers\Auth;
+namespace App\Api\V1\Http\Controllers\Auth;
 
+use App\Api\V1\Http\Requests\Auth\AuthenticateRequest;
 use Illuminate\Http\Request;
 use App\Core\Http\Controllers\Controller;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -15,13 +16,8 @@ class AuthController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function authenticate(Request $request)
+    public function authenticate(AuthenticateRequest $request)
     {
-        $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
         $credentials = $request->only('email', 'password');
 
         try {
@@ -41,7 +37,7 @@ class AuthController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function register(Request $request)
+    public function register(AuthRe $request)
     {
         $this->validate($request, [
             'name' => 'required',
