@@ -28,6 +28,7 @@ class Kernel extends HttpKernel
         'auth' => \App\Core\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \App\Core\Http\Middleware\RedirectIfAuthenticated::class,
-        'checkTokenExists' => \App\Core\Http\Middleware\CheckTokenExists::class
+        'checkTokenExists' => \App\Core\Http\Middleware\CheckTokenExists::class,
+        'cors' => \Barryvdh\Cors\HandleCors::class
     ];
 }
