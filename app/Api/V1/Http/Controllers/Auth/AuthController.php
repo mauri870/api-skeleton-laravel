@@ -2,11 +2,12 @@
 
 namespace App\Api\V1\Http\Controllers\Auth;
 
-use App\Api\V1\Http\Requests\Auth\AuthenticateRequest;
 use Illuminate\Http\Request;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Core\Http\Controllers\Controller;
 use Tymon\JWTAuth\Exceptions\JWTException;
-use Tymon\JWTAuth\Facades\JWTAuth;
+use App\Api\V1\Http\Requests\Auth\AuthenticateRequest;
+use App\Api\V1\Http\Requests\Auth\RegisterRequest;
 
 class AuthController extends Controller
 {
@@ -37,7 +38,7 @@ class AuthController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function register(AuthenticateRequest $request)
+    public function register(RegisterRequest $request)
     {
         $credentials = $request->only('name', 'email', 'password');
 
