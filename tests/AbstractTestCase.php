@@ -11,7 +11,7 @@ use Illuminate\Foundation\Testing\TestCase;
 
 abstract class AbstractTestCase extends TestCase
 {
-    use DatabaseMigrations, DatabaseTransactions, DatabaseSeeds, InteractsWithUser;
+    use DatabaseMigrations, DatabaseTransactions;
 
     /**
      * The base URL to use while testing the application.
