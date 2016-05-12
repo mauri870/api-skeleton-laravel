@@ -37,14 +37,8 @@ class AuthController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function register(AuthRe $request)
+    public function register(AuthenticateRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
         $credentials = $request->only('name', 'email', 'password');
 
         $user = \App\Domains\Users\User::create($credentials);
