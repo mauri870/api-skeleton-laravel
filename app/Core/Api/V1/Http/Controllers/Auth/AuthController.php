@@ -2,6 +2,7 @@
 
 namespace App\Core\Api\V1\Http\Controllers\Auth;
 
+use App\Domains\Users\Repositories\UserRepositoryInterface;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -13,6 +14,17 @@ use App\Core\Api\V1\Http\Requests\Auth\RegisterRequest;
 class AuthController extends Controller
 {
     use Helpers;
+
+    /**
+     * @var UserRepositoryInterface
+     */
+    private $userRepository;
+
+    public function __construct(UserRepositoryInterface $userRepository)
+    {
+
+        $this->userRepository = $userRepository;
+    }
 
     /**
      * Authenticate a user
@@ -45,7 +57,7 @@ class AuthController extends Controller
     {
         $credentials = $request->only('name', 'email', 'password');
 
-        $user = \App\Domains\Users\User::create($credentials);
+        $user = $this->userRepository->create($credentials);
 
         // Todo Send registration email, fire register event, etc
 
