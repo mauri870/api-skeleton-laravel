@@ -37,7 +37,6 @@ class AuthenticateRequest extends Request
     public function attributes()
     {
         return [
-            'name' => 'nome',
             'email' => 'email',
             'password' => 'senha',
         ];
