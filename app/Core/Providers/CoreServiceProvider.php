@@ -3,7 +3,8 @@
 namespace App\Core\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Domains\Users\Notification;
+use App\Domains\Users\Repositories\UserRepositoryInterface;
+use App\Domains\Users\Repositories\UserRepositoryEloquent;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -14,7 +15,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app->bind(UserRepositoryInterface::class, UserRepositoryEloquent::class);
     }
 
     /**
