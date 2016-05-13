@@ -1,14 +1,18 @@
 <?php
-/**
- * @author    Mauri de Souza Nunes <mauri870@gmail.com>
- * @copyright Copyright (c) 2016, Mauri de Souza Nunes <github.com/mauri870>
- * @license   https://opensource.org/licenses/MIT MIT License
- */
 
 namespace App\tests\Core;
 
+use App\Tests\AbstractTestCase;
+use App\Domains\Users\Repositories\UserRepositoryInterface;
+use App\Domains\Users\Repositories\UserRepositoryEloquent;
 
-class BindingsTest
+class BindingsTest extends AbstractTestCase
 {
-
+    public function test_user_repository_binds()
+    {
+        $this->assertEquals(
+            get_class(app(UserRepositoryInterface::class)),
+            UserRepositoryEloquent::class
+        );
+    }
 }
