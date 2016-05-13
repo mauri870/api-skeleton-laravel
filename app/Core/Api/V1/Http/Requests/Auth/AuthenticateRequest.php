@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Api\V1\Http\Requests\Auth;
+namespace App\Core\Api\V1\Http\Requests\Auth;
 
 use App\Core\Http\Requests\Request;
 
-class RegisterRequest extends Request
+class AuthenticateRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,6 @@ class RegisterRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required',
             'email' => 'required|email',
             'password' => 'required'
         ];

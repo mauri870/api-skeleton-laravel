@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Api\V1\Http\Controllers\Auth;
+namespace App\Core\Api\V1\Http\Controllers\Auth;
 
 use Dingo\Api\Facade\API;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Core\Http\Controllers\Controller;
 use Tymon\JWTAuth\Exceptions\JWTException;
-use App\Api\V1\Http\Requests\Auth\AuthenticateRequest;
-use App\Api\V1\Http\Requests\Auth\RegisterRequest;
+use App\Core\Api\V1\Http\Requests\Auth\AuthenticateRequest;
+use App\Core\Api\V1\Http\Requests\Auth\RegisterRequest;
 
 class AuthController extends Controller
 {
