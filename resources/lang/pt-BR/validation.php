@@ -29,6 +29,7 @@ return [
     ],
     "boolean"          => "O campo :attribute deverá ter o valor verdadeiro ou falso.",
     "confirmed"        => "A confirmação para o campo :attribute não coincide.",
+    'cnpj'             => "O campo :attribute não contém um cnpj válido.",
     "date"             => "O campo :attribute não contém uma data válida.",
     "date_format"      => "A data indicada para o campo :attribute não respeita o formato :format.",
     "different"        => "Os campos :attribute e :other deverão conter valores diferentes.",
