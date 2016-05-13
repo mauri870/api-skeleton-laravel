@@ -62,6 +62,6 @@ class AuthController extends Controller
      */
     public function validateToken()
     {
-        return API::response()->array(['status' => 'success'])->statusCode(200);
+        return $this->response->array(['status' => 'success'])->statusCode(200);
     }
 }
