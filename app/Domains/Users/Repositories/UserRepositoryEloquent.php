@@ -1,14 +1,16 @@
 <?php
-/**
- * @author    Mauri de Souza Nunes <mauri870@gmail.com>
- * @copyright Copyright (c) 2016, Mauri de Souza Nunes <github.com/mauri870>
- * @license   https://opensource.org/licenses/MIT MIT License
- */
 
-namespace App\app\Domains\Users\Repositories;
+namespace App\Domains\Users\Repositories;
 
 
-class UserRepositoryEloquent
+use App\Domains\Users\Repositories\UserRepositoryInterface;
+use App\Domains\Users\User;
+use Prettus\Repository\Eloquent\BaseRepository;
+
+class UserRepositoryEloquent extends BaseRepository implements UserRepositoryInterface
 {
-
+    public function model()
+    {
+        return User::class;
+    }
 }
