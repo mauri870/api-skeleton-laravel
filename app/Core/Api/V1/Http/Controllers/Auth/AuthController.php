@@ -2,7 +2,6 @@
 
 namespace App\Core\Api\V1\Http\Controllers\Auth;
 
-use Dingo\Api\Facade\API;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
