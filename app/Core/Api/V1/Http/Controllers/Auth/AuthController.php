@@ -3,6 +3,7 @@
 namespace App\Core\Api\V1\Http\Controllers\Auth;
 
 use Dingo\Api\Facade\API;
+use Dingo\Api\Routing\Helpers;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Core\Http\Controllers\Controller;
@@ -12,6 +13,8 @@ use App\Core\Api\V1\Http\Requests\Auth\RegisterRequest;
 
 class AuthController extends Controller
 {
+    use Helpers;
+
     /**
      * Authenticate a user
      *
@@ -24,13 +27,13 @@ class AuthController extends Controller
 
         try {
             if (! $token = JWTAuth::attempt($credentials)) {
-                return response()->json(['error' => 'invalid_credentials'], 401);
+                return $this->response->error('invalid_credentials', 401);
             }
         } catch (JWTException $e) {
-            return response()->json(['error' => 'could_not_create_token'], 500);
+            return $this->response->error('could_not_create_token', 500);
         }
 
-        return response()->json(compact('token'));
+        return $this->response->array(compact('token'));
     }
 
     /**
@@ -49,7 +52,7 @@ class AuthController extends Controller
 
         $token = JWTAuth::fromUser($user);
 
-        return response()->json(compact('token'));
+        return $this->response->array(compact('token'));
     }
 
     /**
