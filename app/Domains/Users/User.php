@@ -28,7 +28,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email', 'password', 'company_name', 'cnpj', 'address', 'city', 'telephone'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -36,15 +36,4 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
-
-
-    /**
-     * Relation between user and notification
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function notifications()
-    {
-        return $this->HasMany(Notification::class);
-    }
 }
