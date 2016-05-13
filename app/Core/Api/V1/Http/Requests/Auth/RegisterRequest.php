@@ -24,8 +24,13 @@ class RegisterRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|unique',
-            'email' => 'required|unique',
+            'name' => 'required|unique:users',
+            'company_name' => 'required|unique:users',
+            'cnpj' => 'required|cnpj',
+            'address' => 'required',
+            'city' => 'required',
+            'telephone' => 'required',
+            'email' => 'required|unique:users',
             'password' => 'required'
         ];
     }
@@ -39,8 +44,13 @@ class RegisterRequest extends Request
     {
         return [
             'name' => 'nome',
+            'company_name' => 'razão social',
+            'cnpj' => 'cnpj',
+            'address' => 'endereço',
+            'city' => 'cidade',
+            'telephone' => 'telefone',
             'email' => 'email',
-            'password' => 'senha',
+            'password' => 'senha'
         ];
     }
 }
