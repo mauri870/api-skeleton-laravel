@@ -14,18 +14,13 @@
 $factory->define(App\Domains\Users\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
+        'company_name' => $faker->company,
         'email' => $faker->email,
+        'cnpj' => random_cnpj(),
+        'address' => $faker->address,
+        'city' => $faker->city,
+        'telephone' => $faker->phoneNumber,
         'password' => bcrypt(str_random(10)),
-        'remember_token' => str_random(10),
-    ];
-});
-
-$factory->define(App\Domains\Users\Notification::class, function (Faker\Generator $faker) {
-    $types = ['info','success','warning','error'];
-    return [
-        'title' => $faker->title,
-        'type' => $types[array_rand($types)],
-        'body' => $faker->paragraph(),
-        'user_id' => App\Domains\Users\User::all()->random()->id
+        'remember_token' => str_random(100),
     ];
 });
