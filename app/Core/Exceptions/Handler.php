@@ -5,13 +5,15 @@ namespace App\Core\Exceptions;
 use Exception;
 use App\Core\Traits\RestTrait;
 use App\Core\Traits\RestExceptionHandlerTrait;
+use App\Core\Traits\RenderExceptionWithWhoops;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
-    use RestTrait, RestExceptionHandlerTrait;
+    use RestTrait, RestExceptionHandlerTrait, RenderExceptionWithWhoops;
+
     /**
      * A list of the exception types that should not be reported.
      *
@@ -54,25 +56,4 @@ class Handler extends ExceptionHandler
 
         return parent::render($request, $e);
     }
-
-    /**
-     * Render an exception using Whoops.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Exception $e
-     * @return \Illuminate\Http\Response
-     */
-    protected function renderExceptionWithWhoops($request, Exception $e)
-    {
-        $whoops = new \Whoops\Run;
-
-        $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler());
-
-        return new \Illuminate\Http\Response(
-            $whoops->handleException($e),
-            $e->getStatusCode(),
-            $e->getHeaders()
-        );
-    }
-
 }
