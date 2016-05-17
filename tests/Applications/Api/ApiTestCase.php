@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Tests;
+namespace App\Tests\Applications\Api;
 
+use App\Tests\AbstractTestCase;
 use App\Tests\Traits\InteractsWithApi;
 
 abstract class ApiTestCase extends AbstractTestCase
