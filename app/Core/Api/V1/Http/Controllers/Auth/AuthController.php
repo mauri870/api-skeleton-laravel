@@ -4,9 +4,9 @@ namespace App\Core\Api\V1\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use App\Core\Traits\ResponseHelpers;
 use App\Core\Http\Controllers\Controller;
 use Tymon\JWTAuth\Exceptions\JWTException;
-use App\Core\Traits\ResponseHelpers;
 use App\Core\Api\V1\Http\Requests\Auth\RegisterRequest;
 use App\Core\Api\V1\Http\Requests\Auth\AuthenticateRequest;
 use App\Domains\Users\Repositories\UserRepositoryInterface;
@@ -28,7 +28,7 @@ class AuthController extends Controller
     /**
      * Authenticate a user
      *
-     * @param Request $request
+     * @param AuthenticateRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function authenticate(AuthenticateRequest $request)
@@ -49,7 +49,7 @@ class AuthController extends Controller
     /**
      * Register a new user
      *
-     * @param Request $request
+     * @param RegisterRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function register(RegisterRequest $request)
@@ -62,7 +62,7 @@ class AuthController extends Controller
 
         $token = JWTAuth::fromUser($user);
 
-        return $this->ApiResponse(  compact('token'));
+        return $this->ApiResponse(compact('token'));
     }
 
     /**
