@@ -2,11 +2,13 @@
 
 namespace App\Core\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Core\Traits\RestTrait;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Foundation\Http\FormRequest;
 
 abstract class Request extends FormRequest
 {
+    use RestTrait;
     /**
      * Get the proper failed validation response for the request.
      *
@@ -15,8 +17,8 @@ abstract class Request extends FormRequest
      */
     public function response(array $errors)
     {
-        if ($this->ajax() || $this->wantsJson()) {
-            return new JsonResponse(['errors' => $errors], 422);
+        if ($this->ajax() || $this->wantsJson() || $this->isApiCall($this)) {
+            return new JsonResponse(['message' => 'Validation failed', 'errors' => $errors], 422);
         }
 
         return $this->redirector->to($this->getRedirectUrl())
