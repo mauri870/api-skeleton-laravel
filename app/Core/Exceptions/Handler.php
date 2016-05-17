@@ -7,7 +7,6 @@ use App\Core\Traits\RestTrait;
 use App\Core\Traits\RestExceptionHandlerTrait;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -61,7 +60,7 @@ class Handler extends ExceptionHandler
      *
      * @param  \Illuminate\Http\Request $request
      * @param  \Exception $e
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     protected function renderExceptionWithWhoops($request, Exception $e)
     {
