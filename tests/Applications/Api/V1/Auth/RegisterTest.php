@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Tests\Core\Api\V1\Auth;
+namespace App\Tests\Applications\Api\V1\Auth;
 
-use App\Tests\ApiTestCase;
+use App\Tests\Applications\Api\V1\V1TestCase;
 
-class RegisterTest extends ApiTestCase
+class RegisterTest extends V1TestCase
 {
     private $newUser;
 
