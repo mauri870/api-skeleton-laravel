@@ -2,23 +2,26 @@
 
 namespace App\Core\Http\Requests;
 
-use Illuminate\Http\JsonResponse;
 use App\Core\Traits\Rest\RestTrait;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Routing\Redirector;
+use App\Core\Traits\Rest\ResponseHelpers;
 use Illuminate\Foundation\Http\FormRequest;
 
 abstract class Request extends FormRequest
 {
-    use RestTrait;
+    use RestTrait, ResponseHelpers;
+
     /**
      * Get the proper failed validation response for the request.
      *
      * @param  array  $errors
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return JsonResponse | Redirector
      */
     public function response(array $errors)
     {
         if ($this->ajax() || $this->wantsJson() || $this->isApiCall($this)) {
-            return response()->json(['message' => 'Validation failed', 'errors' => $errors], 422);
+            return $this->ApiResponse(['message' => 'Validation failed', 'errors' => $errors], 422);
         }
 
         return $this->redirector->to($this->getRedirectUrl())
