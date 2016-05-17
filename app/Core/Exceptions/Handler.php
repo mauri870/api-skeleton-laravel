@@ -50,7 +50,7 @@ class Handler extends ExceptionHandler
             return $this->getJsonResponseForException($request, $e);
         }
 
-        if (config('app.debug') && app()->environment() != 'testing') {
+        if (config('app.debug') && app()->environment() != 'production') {
             return $this->renderExceptionWithWhoops($request, $e);
         }
 
