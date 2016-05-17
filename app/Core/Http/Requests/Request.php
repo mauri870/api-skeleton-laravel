@@ -2,8 +2,8 @@
 
 namespace App\Core\Http\Requests;
 
-use App\Core\Traits\RestTrait;
 use Illuminate\Http\JsonResponse;
+use App\Core\Traits\Rest\RestTrait;
 use Illuminate\Foundation\Http\FormRequest;
 
 abstract class Request extends FormRequest
@@ -18,7 +18,7 @@ abstract class Request extends FormRequest
     public function response(array $errors)
     {
         if ($this->ajax() || $this->wantsJson() || $this->isApiCall($this)) {
-            return new JsonResponse(['message' => 'Validation failed', 'errors' => $errors], 422);
+            return response()->json(['message' => 'Validation failed', 'errors' => $errors], 422);
         }
 
         return $this->redirector->to($this->getRedirectUrl())

@@ -3,7 +3,7 @@
 namespace App\Tests\Applications\Api;
 
 
-use App\Core\Traits\ResponseHelpers;
+use App\Core\Traits\Rest\ResponseHelpers;
 
 class ResponseHelpersTest extends ApiTestCase
 {

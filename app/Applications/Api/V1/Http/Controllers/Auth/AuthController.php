@@ -3,7 +3,7 @@
 namespace App\Applications\Api\V1\Http\Controllers\Auth;
 
 use Tymon\JWTAuth\Facades\JWTAuth;
-use App\Core\Traits\ResponseHelpers;
+use App\Core\Traits\Rest\ResponseHelpers;
 use App\Core\Http\Controllers\Controller;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\Domains\Users\Repositories\UserRepositoryInterface;
@@ -13,6 +13,7 @@ use App\Applications\Api\V1\Http\Requests\Auth\AuthenticateRequest;
 class AuthController extends Controller
 {
     use ResponseHelpers;
+
     /**
      * @var UserRepositoryInterface
      */
