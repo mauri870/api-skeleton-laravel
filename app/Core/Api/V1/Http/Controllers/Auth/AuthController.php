@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Core\Http\Controllers\Controller;
 use Tymon\JWTAuth\Exceptions\JWTException;
-use App\Core\Support\Traits\ResponseHelpers;
+use App\Core\Traits\ResponseHelpers;
 use App\Core\Api\V1\Http\Requests\Auth\RegisterRequest;
 use App\Core\Api\V1\Http\Requests\Auth\AuthenticateRequest;
 use App\Domains\Users\Repositories\UserRepositoryInterface;

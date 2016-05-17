@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Support\Traits;
+namespace App\Core\Traits;
 
 
 trait ResponseHelpers
