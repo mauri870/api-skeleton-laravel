@@ -30,7 +30,7 @@ class RegisterRequest extends Request
             'address' => 'required',
             'city' => 'required',
             'telephone' => 'required',
-            'email' => 'required|unique:users',
+            'email' => 'required|email|unique:users',
             'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password'
         ];
