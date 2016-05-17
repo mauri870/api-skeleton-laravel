@@ -56,4 +56,16 @@ trait ResponseHelpers
     {
         return $this->ApiResponse($message, $statusCode);
     }
+
+    /**
+     * Returns json response for a method not allowed
+     *
+     * @param string $message
+     * @param int $statusCode
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function methodNotAllowed($message='Method not allowed', $statusCode=405)
+    {
+        return $this->ApiResponse($message, $statusCode);
+    }
 }

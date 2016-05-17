@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 trait RestExceptionHandlerTrait
 {
@@ -26,6 +27,9 @@ trait RestExceptionHandlerTrait
                 break;
             case $this->isNotFoundHttpException($e):
                 $response = $this->notFound();
+                break;
+            case $this->isMethodNotAllowedHttpException($e):
+                $response = $this->methodNotAllowed();
                 break;
             default:
                 $response = $this->badRequest();
@@ -54,5 +58,16 @@ trait RestExceptionHandlerTrait
     protected function isNotFoundHttpException(Exception $e)
     {
         return $e instanceof NotFoundHttpException;
+    }
+
+    /**
+     * Determines if the given exception is a MethodNotAllowedException
+     *
+     * @param Exception $e
+     * @return bool
+     */
+    protected function isMethodNotAllowedHttpException(Exception $e)
+    {
+        return $e instanceof MethodNotAllowedHttpException;
     }
 }
