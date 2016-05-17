@@ -3,6 +3,8 @@
 namespace App\Core\Exceptions;
 
 use Exception;
+use App\Core\Traits\RestTrait;
+use App\Core\Traits\RestExceptionHandlerTrait;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -10,6 +12,7 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
+    use RestTrait, RestExceptionHandlerTrait;
     /**
      * A list of the exception types that should not be reported.
      *
@@ -42,12 +45,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        if ($this->isApiCall($request)) {
+            return $this->getJsonResponseForException($request, $e);
+        }
+
         if (config('app.debug') && app()->environment() != 'testing') {
             return $this->renderExceptionWithWhoops($request, $e);
         }
-        /*if ($e instanceof ModelNotFoundException) {
-            $e = new NotFoundHttpException($e->getMessage(), $e);
-        }*/
 
         return parent::render($request, $e);
     }
