@@ -16,6 +16,6 @@ trait RestTrait
      */
     protected function isApiCall(Request $request)
     {
-        return strpos($request->getUri(), '/api/v') !== false;
+        return $request->is('api/*');
     }
 }
