@@ -4,7 +4,6 @@ namespace App\Tests\Applications\Api;
 
 
 use App\Core\Traits\ResponseHelpers;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ResponseHelpersTest extends ApiTestCase
 {
