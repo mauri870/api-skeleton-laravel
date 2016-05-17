@@ -12,7 +12,6 @@
         "laravelcollective/remote": "5.1.*",
         "prettus/l5-repository": "^2.1",
         "barryvdh/laravel-ide-helper": "^2.1",
-        "dingo/api": "1.0.*@dev",
         "tymon/jwt-auth": "0.5.*",
         "barryvdh/laravel-cors": "^0.8.0",
         "kennedytedesco/validation": "~2.0"
