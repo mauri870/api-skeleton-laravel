@@ -31,7 +31,8 @@ class RegisterRequest extends Request
             'city' => 'required',
             'telephone' => 'required',
             'email' => 'required|unique:users',
-            'password' => 'required'
+            'password' => 'required|min:8',
+            'password_confirmation' => 'required|same:password'
         ];
     }
 
@@ -50,7 +51,8 @@ class RegisterRequest extends Request
             'city' => 'cidade',
             'telephone' => 'telefone',
             'email' => 'email',
-            'password' => 'senha'
+            'password' => 'senha',
+            'password_confirmation' => 'confirmação de senha'
         ];
     }
 }
