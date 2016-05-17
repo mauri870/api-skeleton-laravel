@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Core\Api\V1\Http\Controllers\Auth;
+namespace App\Applications\Api\V1\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Core\Traits\ResponseHelpers;
 use App\Core\Http\Controllers\Controller;
 use Tymon\JWTAuth\Exceptions\JWTException;
-use App\Core\Api\V1\Http\Requests\Auth\RegisterRequest;
-use App\Core\Api\V1\Http\Requests\Auth\AuthenticateRequest;
 use App\Domains\Users\Repositories\UserRepositoryInterface;
+use App\Applications\Api\V1\Http\Requests\Auth\RegisterRequest;
+use App\Applications\Api\V1\Http\Requests\Auth\AuthenticateRequest;
 
 class AuthController extends Controller
 {
