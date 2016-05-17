@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Traits;
+namespace App\Core\Traits\Rest;
 
 use Illuminate\Http\Request;
 
