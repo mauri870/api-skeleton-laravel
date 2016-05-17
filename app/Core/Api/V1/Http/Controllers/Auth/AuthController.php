@@ -55,9 +55,9 @@ class AuthController extends Controller
      */
     public function register(RegisterRequest $request)
     {
-        $credentials = $request->only('name', 'email', 'password');
+        $fields = $request->only('name', 'company_name', 'cnpj', 'address', 'city', 'telephone', 'email', 'password');
 
-        $user = $this->userRepository->create($credentials);
+        $user = $this->userRepository->create($fields);
 
         // Todo Send registration email, fire register event, etc
 
