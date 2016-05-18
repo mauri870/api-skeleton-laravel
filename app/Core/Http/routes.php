@@ -5,6 +5,8 @@ Route::group(['prefix' => 'api', 'namespace' => 'App\Applications\Api', 'middlew
         Route::post('login', 'Auth\AuthController@authenticate');
         Route::post('register', 'Auth\AuthController@register');
 
+        Route::get('plans', 'PlansController@plans');
+
         Route::group(['middleware' => 'jwt.auth'], function () {
             // Todo Implement Protected routes
             Route::get('validate_token', 'Auth\AuthController@validateToken');
