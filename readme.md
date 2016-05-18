@@ -2,18 +2,18 @@
 
 ## Installation
 
-    ```
-    composer install
-    ```
-    
-    ```
-    php artisan migrate:refresh
-    ```
+```bash
+composer install
+```
+
+```bash
+php artisan migrate:refresh
+```
 
 ## Docker
 
 This skeleton comes with docker containers preconfigured. See `docker-compose.yml` for adding or removing containers.
-A number of build-in commands is available:
+The following build-in commands is available:
 
 `php artisan docker:up | down | restart` - Start, drop or restart the docker containers specified on docker-compose.yml
 
