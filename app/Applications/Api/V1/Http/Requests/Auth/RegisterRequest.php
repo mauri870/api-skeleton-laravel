@@ -25,10 +25,7 @@ class RegisterRequest extends Request
     {
         return [
             'name' => 'required|unique:users',
-            'company_name' => 'required|unique:users',
-            'cnpj' => 'required|cnpj',
             'address' => 'required',
-            'city' => 'required',
             'telephone' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8',
@@ -45,8 +42,6 @@ class RegisterRequest extends Request
     {
         return [
             'name' => 'nome',
-            'company_name' => 'razão social',
-            'cnpj' => 'cnpj',
             'address' => 'endereço',
             'city' => 'cidade',
             'telephone' => 'telefone',

@@ -54,11 +54,9 @@ class AuthController extends Controller
      */
     public function register(RegisterRequest $request)
     {
-        $fields = $request->only('name', 'company_name', 'cnpj', 'address', 'city', 'telephone', 'email', 'password');
+        $fields = $request->only('name', 'address', 'telephone', 'email', 'password');
 
         $user = $this->userRepository->create($fields);
-
-        // Todo Send registration email, fire register event, etc
 
         $token = JWTAuth::fromUser($user);
 
