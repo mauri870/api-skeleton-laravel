@@ -6,7 +6,7 @@ Route::group(['prefix' => 'api', 'namespace' => 'App\Applications\Api', 'middlew
         Route::post('register', 'Auth\AuthController@register');
 
         Route::group(['middleware' => 'jwt.auth'], function () {
-            Route::get('validate_token', 'Auth\AuthController@validateToken');
+            Route::get('me', 'Auth\AuthController@me');
         });
     });
 });

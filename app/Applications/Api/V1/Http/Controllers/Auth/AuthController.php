@@ -2,6 +2,7 @@
 
 namespace App\Applications\Api\V1\Http\Controllers\Auth;
 
+use Illuminate\Http\JsonResponse;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Core\Traits\Rest\ResponseHelpers;
 use App\Core\Http\Controllers\Controller;
@@ -64,12 +65,12 @@ class AuthController extends Controller
     }
 
     /**
-     * Return success if is authenticated
+     * Return the current authenticated user
      *
-     * @return mixed
+     * @return JsonResponse
      */
-    public function validateToken()
+    public function me()
     {
-        return $this->ApiResponse('You are authenticated!');
+        return $this->ApiResponse($this->userRepository->find(auth()->user()->id));
     }
 }
