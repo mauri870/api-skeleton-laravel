@@ -26,6 +26,7 @@
         <env name="APP_ENV" value="testing"/>
         <env name="APP_DEBUG" value="false"/>
         <env name="API_DEBUG" value="false"/>
+        <env name="DB_CONNECTION" value="testing"/>
         <env name="APP_KEY" value="lND99JI6k08NCO9aVX58cuYtE336Edhj"/>
         <env name="CACHE_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
