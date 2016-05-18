@@ -56,7 +56,7 @@ return [
 
 
     //Set carbon Language
-    \Carbon\Carbon::setLocale(env('CARBON_LOCALE', 'en_US')),
+    \Carbon\Carbon::setLocale(env('CARBON_LOCALE', 'en')),
 
     /*
     |--------------------------------------------------------------------------
