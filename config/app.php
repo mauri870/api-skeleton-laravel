@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'timezone' => 'America/Sao_Paulo',
+    'timezone' => env('APP_TIMEZONE'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,11 +52,11 @@ return [
     |
     */
 
-    'locale' => 'pt-BR',
+    'locale' => env('APP_LOCALE'),
 
 
     //Set carbon Language
-    \Carbon\Carbon::setLocale('pt_BR'),
+    \Carbon\Carbon::setLocale(env('CARBON_LOCALE', 'en_US')),
 
     /*
     |--------------------------------------------------------------------------
@@ -69,7 +69,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'pt-BR',
+    'fallback_locale' => 'en_US',
 
     /*
     |--------------------------------------------------------------------------
