@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class UsersTableSeeder extends Seeder
+class PlansTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,21 +12,17 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert(
+        DB::table('plans')->insert(
             [
-             'name'=>'Test',
-             'email'=>'test@test.com',
-             'company_name' => 'Test Company Inc',
-             'cnpj' => random_cnpj(),
-             'address' => 'Street 223',
-             'city' => 'Example City',
-             'telephone' => '12345678',
-             'password'=> bcrypt('12345678'),
-             'created_at'=> \Carbon\Carbon::now(),
-             'updated_at'=> \Carbon\Carbon::now()
+                'name'=>'Plan 6',
+                'qt_users'=> 150,
+                'description' => 'The bigger Plan ever!',
+                'value' => '500',
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
             ]
         );
 
-        factory(App\Domains\Users\User::class, 2)->create();
+        factory(App\Domains\Plans\Plan::class, 5)->create();
     }
 }
