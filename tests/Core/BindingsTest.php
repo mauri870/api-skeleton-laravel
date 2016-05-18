@@ -17,12 +17,4 @@ class BindingsTest extends AbstractTestCase
             UserRepositoryEloquent::class
         );
     }
-
-    public function test_plan_repository_binds()
-    {
-        $this->assertEquals(
-            get_class(app(PlanRepositoryInterface::class)),
-            PlanRepositoryEloquent::class
-        );
-    }
 }
