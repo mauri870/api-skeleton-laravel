@@ -24,3 +24,13 @@ $factory->define(App\Domains\Users\User::class, function (Faker\Generator $faker
         'remember_token' => str_random(100),
     ];
 });
+
+$factory->define(App\Domains\Plans\Plan::class, function (Faker\Generator $faker) {
+    $users = [10, 20, 50, 100, 125];
+    return [
+        'name'=>'Plan '.$faker->unique()->numberBetween(1,5),
+        'qt_users'=> $users[array_rand($users)],
+        'description' => $faker->paragraph,
+        'value' => $faker->randomFloat()
+    ];
+});
