@@ -8,7 +8,7 @@ trait InteractsWithApi
     {
         $response = $this->call(
             'GET',
-            'validate_token',
+            'me',
             [],
             [],
             [],
@@ -17,7 +17,7 @@ trait InteractsWithApi
             ]
         );
         $this->assertResponseOk();
-        $this->seeJsonEquals(json_decode($response->content(), 1), ['status' => 'success']);
+        $this->seeJsonEquals(json_decode($response->content(), 1), ['status_code' => 200, 'data' => auth()->user()]);
     }
 
     /**
