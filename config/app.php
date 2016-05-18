@@ -147,6 +147,7 @@ return [
         App\Core\Providers\CoreServiceProvider::class,
         App\Core\Providers\EventServiceProvider::class,
         App\Core\Providers\RouteServiceProvider::class,
+        App\Applications\Api\V1\Providers\RouteServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         App\Core\Providers\AuthServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
