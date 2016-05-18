@@ -1,19 +1,9 @@
 {
-    "name": "laravel/framework",
+    "name": "laravel/laravel",
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
-    "homepage": "http://laravel.com",
-    "support": {
-        "issues": "https://github.com/laravel/framework/issues",
-        "source": "https://github.com/laravel/framework"
-    },
-    "authors": [
-        {
-            "name": "Taylor Otwell",
-            "email": "taylorotwell@gmail.com"
-        }
-    ],
+    "type": "project",
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",

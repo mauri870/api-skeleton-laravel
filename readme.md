@@ -30,7 +30,7 @@ Enable more detailed output to your api. For enable set `API_DEBUG=true`
 
 ## Default Routes
 
-For prevent problems with responses, send a `ACCEPT: application/json` header for every request
+For prevent problems with responses, send a `Accept: application/json` header for every request
 
 ### Authentication
 
