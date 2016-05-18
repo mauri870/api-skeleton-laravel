@@ -1,4 +1,4 @@
-# Meeting Api
+# Api Skeleton for Laravel 5.1
 
 ## Installation
 
@@ -7,7 +7,7 @@
     ```
     
     ```
-    php artisan migrate:refresh --seed
+    php artisan migrate:refresh
     ```
 
 ## Docker
