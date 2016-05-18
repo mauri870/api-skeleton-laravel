@@ -24,15 +24,11 @@
     </filter>
     <php>
         <env name="APP_ENV" value="testing"/>
+        <env name="APP_DEBUG" value="false"/>
+        <env name="API_DEBUG" value="false"/>
         <env name="APP_KEY" value="lND99JI6k08NCO9aVX58cuYtE336Edhj"/>
         <env name="CACHE_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
-        <env name="API_STANDARDS_TREE" value="x"/>
-        <env name="API_SUBTYPE" value="meetingapp"/>
-        <env name="API_PREFIX" value="api"/>
         <env name="API_VERSION" value="v1"/>
-        <env name="API_NAME" value="Meetings API"/>
-        <env name="API_STRICT" value="false"/>
-        <env name="API_DEBUG" value="false"/>
     </php>
 </phpunit>
