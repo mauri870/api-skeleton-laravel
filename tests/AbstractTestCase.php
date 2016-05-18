@@ -2,8 +2,6 @@
 
 namespace App\Tests;
 
-use App\Tests\Traits\DatabaseSeeds;
-use App\Tests\Traits\InteractsWithUser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Console\Kernel;
