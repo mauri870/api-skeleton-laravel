@@ -16,10 +16,7 @@ class UsersTableSeeder extends Seeder
             [
              'name'=>'Test',
              'email'=>'test@test.com',
-             'company_name' => 'Test Company Inc',
-             'cnpj' => random_cnpj(),
              'address' => 'Street 223',
-             'city' => 'Example City',
              'telephone' => '12345678',
              'password'=> bcrypt('12345678'),
              'created_at'=> \Carbon\Carbon::now(),
