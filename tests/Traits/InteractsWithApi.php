@@ -34,7 +34,7 @@ trait InteractsWithApi
      */
     public function callAPI($method, $uri, $parameters = [], $cookies = [], $files = [], $server = [], $content = null)
     {
-        $server = array_merge(['HTTP_ACCEPT' => $this->accept_header], $server);
+        $server = array_merge(['HTTP_ACCEPT' => 'application/json'], $server);
         return $this->call($method, $uri, $parameters, $cookies, $files, $server, $content);
     }
 }
