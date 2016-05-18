@@ -105,6 +105,10 @@ $this->methodNotAllowed();
 
 Basically all the methods above are shortcuts and have the same signature as `ApiResponse`, and they are also used by the rest handler too
 
+If you can customize the default error message for all responses, edit the `ApiResponse` method in [App\Core\Traits\Rest\ResponseHelpers](https://github.com/mauri870/api-skeleton-laravel/blob/master/app/Core/Traits/Rest/ResponseHelpers.php) class
+
+>Remember to always use the methods from `ResponseHelpers`, because your project will always follow this pattern, so the maintenece is more easy
+
 The default format for json responses is the following:
 
 ```
@@ -138,6 +142,30 @@ $this->badRequest();
 ...
 
 ```
+
+### Validation Errors
+Please extend the `App\Core\Http\Requests\Request` for your validators, because the json response has a little change comparing with default `FormRequest` class.
+
+In case of request is `ajax`, `wantsJson` or `isApiCall` a json response with errors will be automatically generated with `422` status.
+
+The response body for errors is someting like this:
+
+```
+{
+  "status_code": 422,
+  "message": "Validation failed",
+  "errors": {
+    "field": [
+      "Validation error is here"
+    ],
+    "other_field": [
+      "Other validation error"
+    ]
+  }
+}
+```
+
+You can customize the default error message editing the response method in [App\Core\Http\Requests\Request](https://github.com/mauri870/api-skeleton-laravel/blob/master/app/Core/Http/Requests/Request.php)
 
 
 ## Docker
