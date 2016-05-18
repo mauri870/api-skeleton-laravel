@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'timezone' => env('APP_TIMEZONE'),
+    'timezone' => env('APP_TIMEZONE', 'UTC'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE'),
+    'locale' => env('APP_LOCALE', 'en_US'),
 
 
     //Set carbon Language
