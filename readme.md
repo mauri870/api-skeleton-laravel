@@ -78,6 +78,60 @@ For prevent problems with responses, send a `ACCEPT: application/json` header fo
               "message": "You are authenticated!"
             }
             
+## Errors
+All exceptions thrown within the scope of your api (see `isApiCall` method in RestTrait) will be parsed by the laravel handler.
+
+The Api exceptions will be parsed as json, the exceptions out of the api scope will be parsed with `whoops` (if app is not in production and APP_DEBUG is true)
+or otherwise by the normal handler.
+
+Use the `ResponseHelpers` trait for standardize your api responses:
+
+```
+$this->ApiResponse($data, $status_code);
+
+$this->badRequest();
+
+$this->modelNotFound();
+
+$this->notFound();
+
+$this->methodNotAllowed();
+```
+
+Basically all the methods above are shortcuts and have the same signature as `ApiResponse`, and they are also used by the rest handler too
+
+The default format for json responses is the following:
+
+```
+$this->ApiResponse('String Response');
+
+{
+    "status_code" => 200,
+    "message" => 'String Response'
+}
+
+
+$this->ApiResponse(['joke' => "I'm a teapot"], 418);
+
+{
+    "status_code" => 418,
+    "joke" => "I'm a teapot"
+    
+}
+
+$this->badRequest();
+
+{
+    "status_code" => 400,
+    "message" => "Bad Request"
+    
+}
+
+...
+
+```
+
+
 ## Docker
 
 This skeleton comes with docker containers preconfigured. See `docker-compose.yml` for adding or removing containers.
