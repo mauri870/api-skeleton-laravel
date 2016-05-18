@@ -2,6 +2,7 @@
 
 namespace App\Core\Traits\Rest;
 
+use Illuminate\Database\Eloquent\Model;
 
 trait ResponseHelpers
 {
@@ -14,6 +15,10 @@ trait ResponseHelpers
      */
     public function ApiResponse($data = [], $status = 200)
     {
+        if ($data instanceof Model) {
+            $data = ['data' => $data];
+        }
+
         if (!is_array($data)) {
             $data = ['message' => $data];
         }
