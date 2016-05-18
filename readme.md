@@ -64,7 +64,7 @@ For prevent problems with responses, send a `Accept: application/json` header fo
               "token": "your_token_here"
             }
 
-#### GET `api/v1/validate_token` (need jwt token)
+#### GET `api/v1/me` (need jwt token)
 + Request
     + Headers
     
@@ -75,7 +75,12 @@ For prevent problems with responses, send a `Accept: application/json` header fo
 
             {
               "status_code": 200,
-              "message": "You are authenticated!"
+              "data": [
+                "id": "1",
+                "name": "User",
+                "email": "user@app.com",
+                ...
+              ]
             }
             
 ## Errors
