@@ -22,7 +22,7 @@ class AuthenticateTest extends V1TestCase
 
         $this->loginUser = [
             'email' => 'test@test.com',
-            'password' => 12345678
+            'password' => '12345678'
         ];
     }
 
