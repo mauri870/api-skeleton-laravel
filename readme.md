@@ -105,7 +105,7 @@ $this->methodNotAllowed();
 
 Basically all the methods above are shortcuts and have the same signature as `ApiResponse`, and they are also used by the rest handler too
 
-If you can customize the default error message for all responses, edit the `ApiResponse` method in [App\Core\Traits\Rest\ResponseHelpers](https://github.com/mauri870/api-skeleton-laravel/blob/master/app/Core/Traits/Rest/ResponseHelpers.php) class
+If you can customize the pattern for all responses, edit the `ApiResponse` method in [App\Core\Traits\Rest\ResponseHelpers](https://github.com/mauri870/api-skeleton-laravel/blob/master/app/Core/Traits/Rest/ResponseHelpers.php) class
 
 >Remember to always use the methods from `ResponseHelpers`, because your project will always follow this pattern, so the maintenece is more easy
 
