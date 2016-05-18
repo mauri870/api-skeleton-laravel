@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Core\Traits\Rest;
+namespace App\Core\Exceptions\Traits;
 
 use Exception;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use App\Core\Traits\Rest\ResponseHelpers;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;

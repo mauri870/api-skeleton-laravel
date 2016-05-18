@@ -4,8 +4,8 @@ namespace App\Core\Exceptions;
 
 use Exception;
 use App\Core\Traits\Rest\RestTrait;
-use App\Core\Traits\RenderExceptionWithWhoops;
-use App\Core\Traits\Rest\RestExceptionHandlerTrait;
+use App\Core\Exceptions\Traits\RenderExceptionWithWhoops;
+use App\Core\Exceptions\Traits\RestExceptionHandlerTrait;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
