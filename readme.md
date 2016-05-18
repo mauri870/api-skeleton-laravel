@@ -109,8 +109,9 @@ $this->ApiResponse('String Response');
     "status_code" => 200,
     "message" => 'String Response'
 }
+```
 
-
+```
 $this->ApiResponse(['joke' => "I'm a teapot"], 418);
 
 {
@@ -118,7 +119,9 @@ $this->ApiResponse(['joke' => "I'm a teapot"], 418);
     "joke" => "I'm a teapot"
     
 }
+```
 
+```
 $this->badRequest();
 
 {
