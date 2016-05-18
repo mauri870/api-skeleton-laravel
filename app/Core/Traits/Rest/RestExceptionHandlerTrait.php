@@ -3,6 +3,7 @@
 namespace App\Core\Traits\Rest;
 
 use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -35,6 +36,24 @@ trait RestExceptionHandlerTrait
                 $response = $this->badRequest();
         }
 
+        if (env('API_DEBUG') && app()->environment() != 'production') {
+            $response = $this->attachDebugInfo($response, $e);
+        }
+
+        return $response;
+    }
+
+    /**
+     * Attach the debug info to response
+     *
+     * @param JsonResponse $response
+     * @param Exception $e
+     * @return bool
+     */
+    protected function attachDebugInfo(JsonResponse $response, Exception $e)
+    {
+        $debug = ['debug' => ['file' => $e->getFile(), 'message' => $e->getMessage(), 'line' => $e->getLine(), 'trace' => $e->getTrace()]];
+        $response->setContent(json_encode(array_merge(json_decode($response->content(), true), $debug)));
         return $response;
     }
 
