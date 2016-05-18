@@ -70,6 +70,6 @@ class AuthController extends Controller
      */
     public function validateToken()
     {
-        return $this->ApiResponse();
+        return $this->ApiResponse('You are authenticated!');
     }
 }
