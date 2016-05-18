@@ -1,10 +1,12 @@
 <?php
 
-namespace App\tests\Core;
+namespace App\Tests\Core;
 
 use App\Tests\AbstractTestCase;
-use App\Domains\Users\Repositories\UserRepositoryInterface;
+use App\Domains\Plans\Repositories\PlanRepositoryEloquent;
 use App\Domains\Users\Repositories\UserRepositoryEloquent;
+use App\Domains\Plans\Repositories\PlanRepositoryInterface;
+use App\Domains\Users\Repositories\UserRepositoryInterface;
 
 class BindingsTest extends AbstractTestCase
 {
@@ -13,6 +15,14 @@ class BindingsTest extends AbstractTestCase
         $this->assertEquals(
             get_class(app(UserRepositoryInterface::class)),
             UserRepositoryEloquent::class
+        );
+    }
+
+    public function test_plan_repository_binds()
+    {
+        $this->assertEquals(
+            get_class(app(PlanRepositoryInterface::class)),
+            PlanRepositoryEloquent::class
         );
     }
 }
