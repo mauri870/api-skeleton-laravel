@@ -164,7 +164,10 @@ The following commands is available for usage:
 `php artisan ssh:run {command} | pull  {--folder=public_html | --branch=master}` - Execute ssh operations
 
 ## Testing
-This skeleton comes with multiple unit tests
+This skeleton comes with multiple unit tests.
+
 ```bash
 phpunit
 ```
+
+For aditional features see the traits inside `tests/Traits`
