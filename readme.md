@@ -1,5 +1,7 @@
 # Api Skeleton for Laravel 5.1
 
+[![Build Status](https://travis-ci.org/mauri870/api-skeleton-laravel.svg?branch=master)](https://travis-ci.org/mauri870/api-skeleton-laravel)
+
 ## Installation
 
 ```bash
@@ -10,6 +12,72 @@ composer install
 php artisan migrate:refresh
 ```
 
+## Folder Structure
+The `app` folder contains 3 subfolders.
+
+```
+Applications - Contains the applications served, like API's, Sites, etc
+
+Core - Contains the core, all the features can be used in your applications
+
+Domains - The domains available, like repositories and models
+```
+
+Feel free to edit and customize this structure
+
+### API Debug
+Enable more detailed output to your api. For enable set `API_DEBUG=true`
+
+## Default Routes
+
+For prevent problems with responses, send a `ACCEPT: application/json` header for every request
+
+### Authentication
+
+#### POST `api/v1/login`
++ Request
+    + email (string) - Your email
+    + password (string) - Your password
+
++ Response 200 (application/json)
+    + Body
+
+            {
+              "status_code": 200,
+              "token": "your_token_here"
+            }
+
+#### POST `api/v1/register`
++ Request
+    + name (string) - Your name
+    + email (string) - Your email
+    + address (string) - Your address
+    + telephone (string) - Your telephone
+    + password (string) - Your password
+    + password_confirmation (string) - The same as your password
+
++ Response 200 (application/json)
+    + Body
+
+            {
+              "status_code": 200,
+              "token": "your_token_here"
+            }
+
+#### GET `api/v1/validate_token` (need jwt token)
++ Request
+    + Headers
+    
+                Authorization: Bearer your_token_here
+
++ Response 200 (application/json)
+    + Body
+
+            {
+              "status_code": 200,
+              "message": "You are authenticated!"
+            }
+            
 ## Docker
 
 This skeleton comes with docker containers preconfigured. See `docker-compose.yml` for adding or removing containers.
