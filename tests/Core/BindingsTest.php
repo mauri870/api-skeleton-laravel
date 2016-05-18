@@ -3,9 +3,7 @@
 namespace App\Tests\Core;
 
 use App\Tests\AbstractTestCase;
-use App\Domains\Plans\Repositories\PlanRepositoryEloquent;
 use App\Domains\Users\Repositories\UserRepositoryEloquent;
-use App\Domains\Plans\Repositories\PlanRepositoryInterface;
 use App\Domains\Users\Repositories\UserRepositoryInterface;
 
 class BindingsTest extends AbstractTestCase
