@@ -3,9 +3,17 @@
 namespace App\Tests\Applications\Api\V1\Auth;
 
 use App\Tests\Applications\Api\V1\V1TestCase;
+use App\Tests\Traits\DatabaseSeeds;
 
 class AuthenticateTest extends V1TestCase
 {
+    use DatabaseSeeds;
+
+    /**
+     * The user credentials for a valid user
+     *
+     * @var array
+     */
     private $loginUser;
 
     public function __construct()
