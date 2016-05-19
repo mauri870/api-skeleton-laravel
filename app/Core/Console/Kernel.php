@@ -18,7 +18,8 @@ class Kernel extends ConsoleKernel
         \App\Core\Console\Commands\Ssh\SshRun::class,
         \App\Core\Console\Commands\Docker\DockerUpCommand::class,
         \App\Core\Console\Commands\Docker\DockerDownCommand::class,
-        \App\Core\Console\Commands\Docker\DockerRestartCommand::class
+        \App\Core\Console\Commands\Docker\DockerRestartCommand::class,
+        \App\Applications\Api\Console\Commands\SwaggerCommand::class
     ];
 
     /**
