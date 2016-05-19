@@ -2,6 +2,20 @@
 
 [![Build Status](https://travis-ci.org/mauri870/api-skeleton-laravel.svg?branch=master)](https://travis-ci.org/mauri870/api-skeleton-laravel)
 
+## Table of Contents
+
+- <a href="#installation">Installation</a>
+- <a href="#api-debug">API Debug</a>
+- <a href="#default-routes">Default Routes</a>
+- <a href="#authentication">Authentication</a>
+- <a href="#transformers">Transformers</a>
+- <a href="#responses-and-errors">Responses and Errors</a>
+    - <a href="#validation-errors">Validation Errors</a>
+- <a href="#docker">Docker</a>
+- <a href="#caddy">Caddy</a>
+- <a href="#commands">Commands</a>
+- <a href="#testing">Testing</a>
+
 ## Installation
 
 ```bash
@@ -82,8 +96,11 @@ For prevent problems with responses, send a `Accept: application/json` header fo
                 ...
               ]
             }
+
+## Transformers
+Transformers allow you to output flexible data structures for your API, an example integrated with the User model is available   
             
-## Errors
+## Responses and Errors
 All exceptions thrown within the scope of your api (see `isApiCall` method in RestTrait) will be parsed by the laravel handler.
 
 The Api exceptions will be parsed as json, the exceptions out of the api scope will be parsed with `whoops` (if app is not in production and APP_DEBUG is true)
