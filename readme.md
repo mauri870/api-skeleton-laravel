@@ -186,7 +186,7 @@ The response body for errors is someting like this:
 You can customize the default error message editing the response method in [App\Core\Http\Requests\Request](https://github.com/mauri870/api-skeleton-laravel/blob/master/app/Core/Http/Requests/Request.php)
 
 ## Swagger Documentation
-You can use doctrine annotations and generate your api doc using the `swagger:generate` command
+You can use [annotations](https://github.com/zircote/swagger-php) and generate your api doc using the `swagger:generate` command
 
 ```
 `php artisan swagger:generate {path=app/ --publish}` - Scan the path and create a swagger json mapping based on annotations
