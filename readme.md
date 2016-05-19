@@ -11,6 +11,7 @@
 - <a href="#transformers">Transformers</a>
 - <a href="#responses-and-errors">Responses and Errors</a>
     - <a href="#validation-errors">Validation Errors</a>
+- <a href="#swagger-documentation">Swagger Documentation</a>
 - <a href="#docker">Docker</a>
 - <a href="#caddy">Caddy</a>
 - <a href="#commands">Commands</a>
@@ -184,6 +185,14 @@ The response body for errors is someting like this:
 
 You can customize the default error message editing the response method in [App\Core\Http\Requests\Request](https://github.com/mauri870/api-skeleton-laravel/blob/master/app/Core/Http/Requests/Request.php)
 
+## Swagger Documentation
+You can use doctrine annotations and generate your api doc using the `swagger:generate` command
+
+```
+`php artisan swagger:generate {path=app/ --publish}` - Scan the path and create a swagger json mapping based on annotations
+```
+
+You can test your swagger.json mapping file [here](http://editor.swagger.io/)
 
 ## Docker
 
@@ -207,6 +216,8 @@ The following commands is available for usage:
 `php artisan docker:up | down | restart` - Start, drop or restart the docker containers specified on docker-compose.yml
 
 `php artisan ssh:run {command} | pull  {--folder=public_html | --branch=master}` - Execute ssh operations
+
+`php artisan swagger:generate {path=app/ --publish}` - Scan the path and create a swagger json mapping based on annotations
 
 ## Testing
 This skeleton comes with multiple unit tests.
