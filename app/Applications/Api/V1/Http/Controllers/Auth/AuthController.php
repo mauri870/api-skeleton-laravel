@@ -57,7 +57,7 @@ class AuthController extends Controller
     {
         $fields = $request->only('name', 'address', 'telephone', 'email', 'password');
 
-        $user = $this->userRepository->create($fields);
+        $user = $this->userRepository->skipPresenter()->create($fields);
 
         $token = JWTAuth::fromUser($user);
 
