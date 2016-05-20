@@ -49,7 +49,7 @@ trait RestExceptionHandlerTrait
      *
      * @param JsonResponse $response
      * @param Exception $e
-     * @return bool
+     * @return JsonResponse
      */
     protected function attachDebugInfo(JsonResponse $response, Exception $e)
     {
