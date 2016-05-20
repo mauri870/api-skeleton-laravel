@@ -15,10 +15,10 @@ class RegisterTest extends V1TestCase
         $this->newUser = [
             'name' => 'New User',
             'email' => 'new@user.com',
-            'password' => 12345678,
+            'password' => '12345678',
             'address' => 'Street Test',
             'telephone' => '12345678',
-            'password_confirmation' => 12345678
+            'password_confirmation' => '12345678'
         ];
     }
 
