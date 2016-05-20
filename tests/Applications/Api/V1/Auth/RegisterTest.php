@@ -18,7 +18,7 @@ class RegisterTest extends V1TestCase
             'password' => '12345678',
             'address' => 'Street Test',
             'telephone' => '12345678',
-            'password_confirmation' => 12345678
+            'password_confirmation' => '12345678'
         ];
     }
 
