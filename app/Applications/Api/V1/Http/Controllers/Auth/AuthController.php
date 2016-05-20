@@ -55,6 +55,7 @@ class AuthController extends Controller
      */
     public function register(RegisterRequest $request)
     {
+        $request->merge(['password' => bcrypt($request->get('password'))]);
         $fields = $request->only('name', 'address', 'telephone', 'email', 'password');
 
         $user = $this->userRepository->skipPresenter()->create($fields);

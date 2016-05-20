@@ -28,7 +28,7 @@ class RegisterTest extends V1TestCase
         $this->assertResponseOk();
 
         $this->assertIfTokenIsValid(json_decode($response->content())->token);
-        $this->seeInDatabase('users', array_except($this->newUser, ['password_confirmation']));
+        $this->seeInDatabase('users', array_except($this->newUser, ['password', 'password_confirmation']));
     }
 
     public function test_can_register_a_user_with_invalid_fields()
