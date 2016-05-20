@@ -8,6 +8,9 @@ use Prettus\Repository\Presenter\FractalPresenter;
 
 class UserPresenter extends FractalPresenter
 {
+    protected $resourceKeyItem = 'users';
+    protected $resourceKeyCollection = 'users';
+
     public function getTransformer()
     {
         return new UserTransformer();

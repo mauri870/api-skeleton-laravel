@@ -90,12 +90,16 @@ For prevent problems with responses, send a `Accept: application/json` header fo
 
             {
               "status_code": 200,
-              "data": [
+              "data": {
+                "type": "users",
                 "id": "1",
-                "name": "User",
-                "email": "user@app.com",
-                ...
-              ]
+                "attributes": {
+                  "name": "Test",
+                  "address": "Street 223",
+                  "telephone": "12345678",
+                  "email": "test@test.com"
+                }
+              }
             }
 
 ## Transformers
