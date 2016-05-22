@@ -16,16 +16,8 @@ abstract class ApiTestCase extends AbstractTestCase
      */
     protected $baseUrl = 'http://localhost/api';
 
-    /**
-     * The accept header for this API
-     *
-     * @var string
-     */
-    protected $accept_header;
-
     public function __construct()
     {
         parent::__construct();
-        $this->accept_header = 'application/'.env('API_STANDARDS_TREE').'.'.env('API_SUBTYPE').'.v1+json';
     }
 }
