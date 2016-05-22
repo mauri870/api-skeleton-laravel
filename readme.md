@@ -103,7 +103,7 @@ For prevent problems with responses, send a `Accept: application/json` header fo
             }
 
 ## Transformers
-Transformers allow you to output flexible data structures for your API, an example integrated with the User model is available   
+Transformers allow you to output flexible data structures for your API, an example integrated with the User repository is available   
             
 ## Responses and Errors
 All exceptions thrown within the scope of your api (see `isApiCall` method in RestTrait) will be parsed by the laravel handler.
