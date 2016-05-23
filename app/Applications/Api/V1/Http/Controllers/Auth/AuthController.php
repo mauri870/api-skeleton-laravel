@@ -38,10 +38,10 @@ class AuthController extends Controller
 
         try {
             if (! $token = JWTAuth::attempt($credentials)) {
-                return $this->ApiResponse('invalid_credentials', 401);
+                return $this->ApiResponse('Invalid Credentials', 401);
             }
         } catch (JWTException $e) {
-            return $this->ApiResponse('could_not_create_token', 500);
+            return $this->ApiResponse('Could not create token', 500);
         }
 
         return $this->ApiResponse(compact('token'));

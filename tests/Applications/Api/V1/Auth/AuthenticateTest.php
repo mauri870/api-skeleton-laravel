@@ -39,7 +39,7 @@ class AuthenticateTest extends V1TestCase
         $wrong_user = ['email' => 'wrong@user.com', 'password' => 'wrong_pass'];
         $response = $this->callAPI('POST', 'login', $wrong_user);
 
-        $this->seeJsonEquals(['message' => 'invalid_credentials','status_code' => 401], $response->content());
+        $this->seeJsonEquals(['message' => 'Invalid Credentials','status_code' => 401], $response->content());
         $this->assertResponseStatus(401);
         $this->notSeeInDatabase('users', $wrong_user);
     }
