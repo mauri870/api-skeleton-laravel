@@ -23,7 +23,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'cors'], function () {
             abort(404);
         });
 
-        Route::group(['middleware' => 'jwt.auth'], function () {
+        Route::group(['middleware' => ['jwt.auth', /*'jwt.refresh'*/]], function () {
             Route::get('me', 'Auth\AuthController@me');
         });
     });
