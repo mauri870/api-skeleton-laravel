@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Traits\Rest;
+namespace App\Applications\Api\Traits\Rest;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -70,6 +70,18 @@ trait ResponseHelpers
      * @return \Illuminate\Http\JsonResponse
      */
     protected function methodNotAllowed($message='Method not allowed', $statusCode=405)
+    {
+        return $this->ApiResponse($message, $statusCode);
+    }
+
+    /**
+    * Returns json response for a maintenence mode
+    *
+    * @param string $message
+    * @param int $statusCode
+    * @return \Illuminate\Http\JsonResponse
+    */
+    protected function downForMaintenence($message='Server temporarily down for maintenence', $statusCode=503)
     {
         return $this->ApiResponse($message, $statusCode);
     }

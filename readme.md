@@ -123,6 +123,8 @@ $this->modelNotFound();
 $this->notFound();
 
 $this->methodNotAllowed();
+
+$this->downForMaintenance();
 ```
 
 Basically all the methods above are shortcuts and have the same signature as `ApiResponse`, and they are also used by the rest handler too

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Core\Exceptions\Traits;
+namespace App\Applications\Api\Exceptions\Traits;
 
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use App\Core\Traits\Rest\ResponseHelpers;
+use App\Applications\Api\Traits\Rest\ResponseHelpers;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
@@ -24,6 +24,9 @@ trait RestExceptionHandlerTrait
     protected function getJsonResponseForException(Request $request, Exception $e)
     {
         switch(true) {
+            case $this->isDownForMaintenence():
+                $response = $this->downForMaintenence();
+                break;
             case $this->isModelNotFoundException($e):
                 $response = $this->modelNotFound();
                 break;
@@ -89,5 +92,15 @@ trait RestExceptionHandlerTrait
     protected function isMethodNotAllowedHttpException(Exception $e)
     {
         return $e instanceof MethodNotAllowedHttpException;
+    }
+
+    /**
+     * Determines if the application is down for maintenence
+     *
+     * @return bool
+     */
+    protected function isDownForMaintenence()
+    {
+        return app()->isDownForMaintenance();
     }
 }
