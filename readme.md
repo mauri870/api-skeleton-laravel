@@ -196,7 +196,9 @@ You can use [annotations](https://github.com/zircote/swagger-php) and generate y
 `php artisan swagger:generate {path=app/ --publish}` - Scan the path and create a swagger json mapping based on annotations
 ```
 
-You can test your swagger.json mapping file [here](http://editor.swagger.io/)
+Alternativelly, a swagger.yaml complete mapping file is available inside `docs` folder, you can use then as a starting point for your documentation.
+ 
+Test it in the [swagger editor](http://editor.swagger.io/)
 
 ## Docker
 
