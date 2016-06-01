@@ -1,0 +1,240 @@
+swagger: '2.0'
+
+################################################################################
+#                              API Information                                 #
+################################################################################
+info:
+  version: v1-dev
+  contact:
+      name: Your Name
+      email: your@email.com
+  title: API Title
+  description: |
+      # Your awesome documentation
+
+      ## Structure
+
+      ### The Envelope
+      Every response is contained by an envelope. That is, each response has a
+      predictable set of keys with which you can expect to interact:
+      ```json
+      {
+          "status_code": 200,
+          ...
+      }
+      ```
+
+      A success response contain a `message` with a string or a `data` key
+      ```json
+        {
+            "status_code": 200,
+            "message": "Hi there!"
+        }
+      ```
+
+      #### Data
+      The data key is the meat of the response. It may be a list or dictionary,
+      but either way this is where you'll find the data you requested.
+      ```json
+        {
+            "status_code": 200,
+            "data": {
+                ...
+            }
+        }
+      ```
+
+      ### Errors
+
+      All errors (except 422 for validations) return a simple response, containing
+      a status_code and a message explaining the error in the following format:
+
+      ```json
+        {
+            "status_code": 400,
+            "message": "Bad Request"
+        }
+      ```
+
+      See above a reference for the status code and messages:
+
+      | Status Code | Message            |
+      |-------------|--------------------|
+      | 400         | Bad Request        |
+      | 404         | Not Found          |
+      | 404         | Record not found   |
+      | 405         | Method not allowed |
+
+
+      #### Validation Errors
+
+      The validation errors return a 422 status code with the following content:
+
+      ```json
+        {
+          "status_code": 422,
+          "message": "Validation failed",
+          "errors": {
+            "field_name": [
+              "Validation error is here"
+            ],
+            "other_field": [
+              "Other validation error"
+            ]
+          }
+        }
+      ```
+
+################################################################################
+#                  Host, Base Path, Schemes and Content Types                  #
+################################################################################
+host: localhost
+schemes:
+  - http
+basePath: /api/v1
+produces:
+  - application/json
+
+################################################################################
+#                                  Security                                    #
+################################################################################
+securityDefinitions:
+  bearer:
+    type: apiKey
+    in: header
+    name: Authorization
+    description: JWT Bearer Authentication
+
+################################################################################
+#                                  Paths                                       #
+################################################################################
+paths:
+  /register:
+    post:
+      tags:
+        - user
+      summary: Register a new user into application
+      description: |
+        The Register endpoint register a new user and return a token for
+        future access.
+      parameters:
+        - name: name
+          in: formData
+          description: A readable name
+          required: true
+          type: string
+
+        - name: address
+          in: formData
+          description: The address
+          required: true
+          type: string
+
+        - name: telephone
+          in: formData
+          description: The user's telephone
+          required: true
+          type: string
+
+        - name: email
+          in: formData
+          description: The user's email, used for login
+          required: true
+          type: string
+
+        - name: password
+          in: formData
+          description: A strong password for use when manage your account
+          required: true
+          type: string
+          minLength: 8
+
+        - name: password_confirmation
+          in: formData
+          description: The same value from password field
+          required: true
+          type: string
+          minLength: 8
+      responses:
+        200:
+          description: The token for future access
+          schema:
+            $ref: '#/definitions/JWTToken'
+
+  /login:
+    post:
+      tags:
+        - user
+      summary: Login a user into application
+      description: |
+        The Login endpoint login a new user with email and password and return a token for usage in future requests.
+      parameters:
+        - name: email
+          in: formData
+          description: A valid email
+          required: true
+          type: string
+
+        - name: password
+          in: formData
+          description: The password
+          required: true
+          type: string
+      responses:
+        200:
+          description: The token for future access
+          schema:
+            $ref: '#/definitions/JWTToken'
+
+  /me:
+    get:
+      tags:
+        - user
+      summary: Return the user information
+      description: |
+        Return the current authenticated user.
+      security:
+        - bearer: []
+      responses:
+        200:
+          description: The user data
+          schema:
+            type: object
+            properties:
+              status_code:
+                default: 200
+                type: number
+              data:
+                $ref: '#/definitions/User'
+
+################################################################################
+#                                 Definitions                                  #
+################################################################################
+definitions:
+  JWTToken:
+    type: object
+    properties:
+      status_code:
+        default: 200
+        type: number
+      token:
+        type: string
+
+  User:
+    type: object
+    properties:
+      type:
+        type: string
+      id:
+        type: number
+      attributes:
+        type: object
+        properties:
+          name:
+            type: string
+          address:
+            type: string
+          telephone:
+            type: string
+          email:
+            type: string
