@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Traits\Rest;
+namespace App\Applications\Api\Traits\Rest;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -73,7 +73,7 @@ trait ResponseHelpers
     {
         return $this->ApiResponse($message, $statusCode);
     }
-    
+
     /**
     * Returns json response for a maintenence mode
     *

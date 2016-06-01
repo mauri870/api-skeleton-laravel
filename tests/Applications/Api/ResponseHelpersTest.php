@@ -3,7 +3,7 @@
 namespace App\Tests\Applications\Api;
 
 
-use App\Core\Traits\Rest\ResponseHelpers;
+use App\Applications\Api\Traits\Rest\ResponseHelpers;
 
 class ResponseHelpersTest extends ApiTestCase
 {
@@ -29,6 +29,11 @@ class ResponseHelpersTest extends ApiTestCase
     public function test_method_not_allowed_http()
     {
         $this->assertJson($this->methodNotAllowed()->content(), ['status_code' => 405, 'message' => 'Method not allowed']);
+    }
+
+    public function test_down_for_maintenence()
+    {
+        $this->assertJson($this->downForMaintenence()->content(), ['status_code' => 503, 'message' => 'Server is temporarily down for maintenence']);
     }
 
     public function test_api_response()

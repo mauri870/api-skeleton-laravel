@@ -2,11 +2,11 @@
 
 namespace App\Core\Http\Requests;
 
-use App\Core\Traits\Rest\RestTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Redirector;
-use App\Core\Traits\Rest\ResponseHelpers;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Applications\Api\Traits\Rest\RestTrait;
+use App\Applications\Api\Traits\Rest\ResponseHelpers;
 
 abstract class Request extends FormRequest
 {

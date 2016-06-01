@@ -4,9 +4,9 @@ namespace App\Applications\Api\V1\Http\Controllers\Auth;
 
 use Illuminate\Http\JsonResponse;
 use Tymon\JWTAuth\Facades\JWTAuth;
-use App\Core\Traits\Rest\ResponseHelpers;
 use App\Core\Http\Controllers\Controller;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use App\Applications\Api\Traits\Rest\ResponseHelpers;
 use App\Domains\Users\Repositories\UserRepositoryInterface;
 use App\Applications\Api\V1\Http\Requests\Auth\RegisterRequest;
 use App\Applications\Api\V1\Http\Requests\Auth\AuthenticateRequest;
