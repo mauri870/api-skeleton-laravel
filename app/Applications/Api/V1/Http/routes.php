@@ -26,7 +26,9 @@ Route::group(['prefix' => 'api', 'middleware' => 'cors'], function () {
         Route::group(['middleware' => ['jwt.auth', /*'jwt.refresh'*/]], function () {
             Route::get('me', 'Auth\AuthController@me');
 
-            Route::put('me/update', 'Auth\AuthController@update');
+            Route::put('me', 'Auth\AuthController@update');
+
+            Route::delete('me', 'Auth\AuthController@delete');
         });
     });
 });

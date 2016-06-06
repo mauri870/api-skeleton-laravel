@@ -63,6 +63,19 @@ trait ResponseHelpers
     }
 
     /**
+     * Returns json response for a successfull request
+     * but no contains response content
+     *
+     * @param string $message
+     * @param int $statusCode
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function okButNoContent($message=null, $statusCode=204)
+    {
+        return $this->ApiResponse($message, $statusCode);
+    }
+
+    /**
      * Returns json response for a method not allowed
      *
      * @param string $message
