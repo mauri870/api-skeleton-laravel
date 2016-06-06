@@ -91,4 +91,16 @@ class AuthController extends Controller
 
         return $this->ApiResponse('Profile Updated successfully');
     }
+
+    /**
+     * Delete the current authenticated user
+     *
+     * @return JsonResponse
+     */
+    public function delete()
+    {
+        $this->userRepository->delete(auth()->user()->id);
+
+        return $this->okButNoContent();
+    }
 }
