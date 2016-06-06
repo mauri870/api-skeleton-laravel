@@ -16,5 +16,8 @@ class DeleteTest extends V1TestCase
         $this->assertResponseStatus(204);
         $this->assertEmpty($this->response->content());
         $this->notSeeInDatabase('users', array_except($user->toArray(), ['password', 'password_confirmation']));
+
+        $this->callAPIWithToken('GET', 'me', JWTAuth::fromUser($user), $user->toArray());
+        $this->assertResponseStatus(404);
     }
 }
