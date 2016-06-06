@@ -27,6 +27,8 @@ Route::group(['prefix' => 'api', 'middleware' => 'cors'], function () {
             Route::get('me', 'Auth\AuthController@me');
 
             Route::put('me/update', 'Auth\AuthController@update');
+
+            Route::delete('me', 'Auth\AuthController@delete');
         });
     });
 });
