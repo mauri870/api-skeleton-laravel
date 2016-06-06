@@ -16,7 +16,7 @@ class UpdateProfileTest extends V1TestCase
         $user_updated['email'] =  'email@updated.com';
         $user_updated['address'] =  'New Avenue';
 
-        $this->callAPIWithToken('PUT', 'me/update', JWTAuth::fromUser($user), $user_updated);
+        $this->callAPIWithToken('PUT', 'me', JWTAuth::fromUser($user), $user_updated);
 
         $this->assertResponseOk();
         $this->notSeeInDatabase('users', array_except($user->toArray(), ['password', 'password_confirmation']));
@@ -28,7 +28,7 @@ class UpdateProfileTest extends V1TestCase
     {
         $user = factory(\App\Domains\Users\User::class)->create();
 
-        $this->callAPIWithToken('PUT', 'me/update', JWTAuth::fromUser($user), $user->toArray());
+        $this->callAPIWithToken('PUT', 'me', JWTAuth::fromUser($user), $user->toArray());
 
         $this->assertResponseOk();
         $this->seeInDatabase('users', array_except($user->toArray(), ['password', 'password_confirmation']));
