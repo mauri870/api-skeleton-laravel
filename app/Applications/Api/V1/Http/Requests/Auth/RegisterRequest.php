@@ -43,7 +43,6 @@ class RegisterRequest extends Request
         return [
             'name' => 'nome',
             'address' => 'endereço',
-            'city' => 'cidade',
             'telephone' => 'telefone',
             'email' => 'email',
             'password' => 'senha',
