@@ -207,6 +207,48 @@ paths:
               data:
                 $ref: '#/definitions/User'
 
+  /me/update:
+    put:
+      tags:
+        - user
+      summary: Update the user profile
+      description: |
+        Update the current authenticated user profile
+      parameters:
+        - name: name
+          in: formData
+          description: A readable name
+          type: string
+
+        - name: address
+          in: formData
+          description: The address
+          type: string
+
+        - name: telephone
+          in: formData
+          description: The user's telephone
+          type: string
+
+        - name: email
+          in: formData
+          description: The user's email, used for login
+          type: string
+      security:
+        - bearer: []
+      responses:
+        200:
+          description: Success
+          schema:
+            type: object
+            properties:
+              status_code:
+                default: 200
+                type: number
+              message:
+                default: Profile Updated successfully
+                type: string
+
 ################################################################################
 #                                 Definitions                                  #
 ################################################################################
