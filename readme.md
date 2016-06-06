@@ -124,8 +124,7 @@ For prevent problems with responses, send a `Accept: application/json` header fo
 
 + Response 204 No Content (application/json)
     + Body
-        
-           ''
+    
 
 
 ## Transformers
