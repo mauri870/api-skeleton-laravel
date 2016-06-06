@@ -64,7 +64,7 @@ trait ResponseHelpers
 
     /**
      * Returns json response for a successfull request
-     * but return no content
+     * but no contains response content
      *
      * @param string $message
      * @param int $statusCode
