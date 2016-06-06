@@ -101,6 +101,31 @@ For prevent problems with responses, send a `Accept: application/json` header fo
                 }
               }
             }
+            
+#### PUT `api/v1/me` (need jwt token)
++ Request
+    + Headers
+    
+                Authorization: Bearer your_token_here
+
++ Response 200 (application/json)
+    + Body
+
+            {
+              "status_code": 200,
+              "message": "Profile Updated successfully"
+            }
+
+#### DELETE `api/v1/me` (need jwt token)
++ Request
+    + Headers
+    
+                Authorization: Bearer your_token_here
+
++ Response 204 No Content (application/json)
+    + Body
+    
+
 
 ## Transformers
 Transformers allow you to output flexible data structures for your API, an example integrated with the User repository is available   
@@ -121,6 +146,8 @@ $this->badRequest();
 $this->modelNotFound();
 
 $this->notFound();
+
+$this->okButNoContent();
 
 $this->methodNotAllowed();
 
@@ -161,7 +188,13 @@ $this->badRequest();
     "status_code" => 400,
     "message" => "Bad Request"
     
-}
+}    
+```
+
+```
+$this->okButNoContent();
+
+''
 
 ...
 
