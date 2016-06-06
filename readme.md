@@ -200,7 +200,7 @@ You can use [annotations](https://github.com/zircote/swagger-php) and generate y
 
 Alternativelly, a swagger.yaml complete mapping file is available inside `docs` folder, you can use then as a starting point for your documentation.
  
-Test it in the [swagger editor](http://editor.swagger.io/)
+Test it in the [swagger editor](http://editor.swagger.io/) or convert then to json if you prefer
 
 ## Docker
 
