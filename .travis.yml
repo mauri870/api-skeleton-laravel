@@ -8,8 +8,6 @@ php:
 
 before_script:
   - travis_retry composer self-update
-  - npm install -g npm@'>=3.8'
-  - travis_retry npm install
   - travis_retry composer install
 
 script: vendor/bin/phpunit
