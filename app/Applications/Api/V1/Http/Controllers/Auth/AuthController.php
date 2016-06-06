@@ -2,6 +2,7 @@
 
 namespace App\Applications\Api\V1\Http\Controllers\Auth;
 
+use App\Applications\Api\V1\Http\Requests\Auth\UpdateRequest;
 use Illuminate\Http\JsonResponse;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Core\Http\Controllers\Controller;
@@ -75,5 +76,19 @@ class AuthController extends Controller
     public function me()
     {
         return $this->ApiResponse($this->userRepository->find(auth()->user()->id));
+    }
+
+    /**
+     * Update the current authenticated user profile
+     *
+     * @return JsonResponse
+     */
+    public function update(UpdateRequest $request)
+    {
+        $fields = $request->only(['name', 'email', 'address', 'telephone']);
+
+        $this->userRepository->update($fields, auth()->user()->id);
+
+        return $this->ApiResponse('Profile Updated successfully');
     }
 }
