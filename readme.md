@@ -150,6 +150,8 @@
     
     $this->notFound();
     
+    $this->okButNoContent();
+    
     $this->methodNotAllowed();
     
     $this->downForMaintenance();
@@ -189,7 +191,13 @@
         "status_code" => 400,
         "message" => "Bad Request"
         
-    }
+    }    
+    ```
+    
+    ```
+    $this->okButNoContent();
+    
+    ''
     
     ...
     
