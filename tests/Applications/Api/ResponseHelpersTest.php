@@ -26,6 +26,11 @@ class ResponseHelpersTest extends ApiTestCase
         $this->assertJson($this->notFound()->content(), ['status_code' => 404, 'message' => 'Not found']);
     }
 
+    public function test_ok_but_no_content()
+    {
+        $this->assertJson($this->okButNoContent()->content(), '');
+    }
+
     public function test_method_not_allowed_http()
     {
         $this->assertJson($this->methodNotAllowed()->content(), ['status_code' => 405, 'message' => 'Method not allowed']);
