@@ -22,4 +22,15 @@ class UpdateProfileTest extends V1TestCase
         $this->notSeeInDatabase('users', array_except($user->toArray(), ['password', 'password_confirmation']));
         $this->seeInDatabase('users', array_except($user_updated, ['password', 'password_confirmation']));
     }
+
+
+    public function test_can_update_profile_with_same_fields ()
+    {
+        $user = factory(\App\Domains\Users\User::class)->create();
+
+        $this->callAPIWithToken('PUT', 'me/update', JWTAuth::fromUser($user), $user->toArray());
+
+        $this->assertResponseOk();
+        $this->seeInDatabase('users', array_except($user->toArray(), ['password', 'password_confirmation']));
+    }
 }
