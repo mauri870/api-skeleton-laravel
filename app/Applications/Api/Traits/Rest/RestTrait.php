@@ -9,7 +9,7 @@ trait RestTrait
     /**
      * Determines if request is an api call.
      *
-     * If the request URI contains '/api/v'.
+     * If the request URI contains '/api/'.
      *
      * @param Request $request
      * @return bool
