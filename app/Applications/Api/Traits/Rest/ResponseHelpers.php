@@ -3,6 +3,7 @@
 namespace App\Applications\Api\Traits\Rest;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\AbstractPaginator;
 
 trait ResponseHelpers
 {
@@ -15,12 +16,16 @@ trait ResponseHelpers
      */
     public function ApiResponse($data = [], $status = 200)
     {
-        if ($data instanceof Model) {
-            $data = ['data' => $data];
-        }
-
-        if (!is_array($data)) {
-            $data = ['message' => $data];
+        switch ($data) {
+            case ($data instanceof Model):
+                $data = ['data' => $data];
+                break;
+            case($data instanceof AbstractPaginator):
+                $data = $data->toArray();
+                break;
+            case (!is_array($data)):
+                $data = ['message' => $data];
+                break;
         }
 
         return response()->json(array_merge(['status_code' => $status], $data), $status);
