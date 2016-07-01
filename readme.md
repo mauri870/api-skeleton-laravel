@@ -11,6 +11,10 @@
 - <a href="#transformers">Transformers</a>
 - <a href="#responses-and-errors">Responses and Errors</a>
     - <a href="#validation-errors">Validation Errors</a>
+- <a href="#pagination">Pagination</a>
+    - <a href="#manually">Manually</a>
+    - <a href="#model">Model</a>
+    - <a href="#repository">Repository</a>
 - <a href="#swagger-documentation">Swagger Documentation</a>
 - <a href="#docker">Docker</a>
 - <a href="#caddy">Caddy</a>
@@ -223,6 +227,106 @@ The response body for errors is someting like this:
 ```
 
 You can customize the default error message editing the response method in [App\Core\Http\Requests\Request](https://github.com/mauri870/api-skeleton-laravel/blob/master/app/Core/Http/Requests/Request.php)
+
+## Pagination
+You can create a pagination manually or using a model or repository
+
+### Manually:
+```
+$paginator = new Illuminate\Pagination\LengthAwarePaginator(
+        range(1,500), //a fake range of total items
+        500, //count as in 1st parameter
+        20, //items per page
+        \Illuminate\Pagination\Paginator::resolveCurrentPage(), //resolve the path
+        ['path' => \Illuminate\Pagination\Paginator::resolveCurrentPath()]
+    );
+return $this->ApiResponse($paginator);
+
+Return:
+{  
+   "status_code":200,
+   "total":500,
+   "per_page":20,
+   "current_page":1,
+   "last_page":25,
+   "next_page_url":"http:\/\/example.app?page=2",
+   "prev_page_url":null,
+   "from":1,
+   "to":500,
+   "data":[  
+      1,
+      2,
+      ...
+      500
+   ]
+}
+```
+
+### Model
+```
+$paginator = User::paginate(10);
+return $this->ApiResponse($paginator);
+
+Return:
+{  
+   "status_code":200,
+   "total":10,
+   "per_page":5,
+   "current_page":1,
+   "last_page":2,
+   "next_page_url":"http:\/\/example.app?page=2",
+   "prev_page_url":null,
+   "from":1,
+   "to":5,
+   "data":[  
+      {  
+         ...
+      },
+      ...
+   ]
+}
+```
+
+### Repository
+```
+$paginator = $this->userRepository->paginate(10);
+return $this->ApiResponse($paginator);
+
+Return:
+{  
+   "status_code":200,
+   "data":[  
+      {  
+         "type":"users",
+         "id":"1",
+         "attributes":{  
+            ...
+         }
+      },
+      {  
+         "type":"users",
+         "id":"2",
+         "attributes":{  
+            ...
+         }
+      },
+      ...
+   ],
+   "meta":{  
+      "pagination":{  
+         "total":10,
+         "count":5,
+         "per_page":5,
+         "current_page":1,
+         "total_pages":2,
+         "links":{  
+            "next":"http:\/\/example.app?page=2"
+         }
+      }
+   }
+}
+```
+* Repositories follow the [json-api](http://jsonapi.org/examples/#pagination) standards for pagination
 
 ## Swagger Documentation
 
