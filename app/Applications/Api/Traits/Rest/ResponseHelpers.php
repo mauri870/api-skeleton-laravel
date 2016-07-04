@@ -4,6 +4,7 @@ namespace App\Applications\Api\Traits\Rest;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\AbstractPaginator;
+use Symfony\Component\HttpFoundation\Response;
 
 trait ResponseHelpers
 {
@@ -14,7 +15,7 @@ trait ResponseHelpers
      * @param int $status
      * @return \Illuminate\Http\JsonResponse
      */
-    public function ApiResponse($data = [], $status = 200)
+    public function ApiResponse($data = null, $status = Response::HTTP_OK)
     {
         switch ($data) {
             case ($data instanceof Model):
@@ -24,7 +25,7 @@ trait ResponseHelpers
                 $data = $data->toArray();
                 break;
             case (!is_array($data)):
-                $data = ['message' => $data];
+                $data = ['message' => ($data != null) ? $data : Response::$statusTexts[$status]];
                 break;
         }
 
@@ -38,7 +39,7 @@ trait ResponseHelpers
      * @param int $statusCode
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function badRequest($message='Bad request', $statusCode=400)
+    protected function badRequest($message = null, $statusCode = Response::HTTP_BAD_REQUEST)
     {
         return $this->ApiResponse($message, $statusCode);
     }
@@ -50,7 +51,7 @@ trait ResponseHelpers
      * @param int $statusCode
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function modelNotFound($message='Record not found', $statusCode=404)
+    protected function modelNotFound($message = null, $statusCode = Response::HTTP_NOT_FOUND)
     {
         return $this->ApiResponse($message, $statusCode);
     }
@@ -62,7 +63,7 @@ trait ResponseHelpers
      * @param int $statusCode
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function notFound($message='Not found', $statusCode=404)
+    protected function notFound($message = null, $statusCode = Response::HTTP_NOT_FOUND)
     {
         return $this->ApiResponse($message, $statusCode);
     }
@@ -75,7 +76,7 @@ trait ResponseHelpers
      * @param int $statusCode
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function okButNoContent($message=null, $statusCode=204)
+    protected function okButNoContent($message = '', $statusCode = Response::HTTP_NO_CONTENT)
     {
         return $this->ApiResponse($message, $statusCode);
     }
@@ -87,7 +88,7 @@ trait ResponseHelpers
      * @param int $statusCode
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function methodNotAllowed($message='Method not allowed', $statusCode=405)
+    protected function methodNotAllowed($message = null, $statusCode = Response::HTTP_METHOD_NOT_ALLOWED)
     {
         return $this->ApiResponse($message, $statusCode);
     }
@@ -99,7 +100,7 @@ trait ResponseHelpers
     * @param int $statusCode
     * @return \Illuminate\Http\JsonResponse
     */
-    protected function downForMaintenence($message='Server temporarily down for maintenence', $statusCode=503)
+    protected function downForMaintenence($message = null, $statusCode = Response::HTTP_SERVICE_UNAVAILABLE)
     {
         return $this->ApiResponse($message, $statusCode);
     }
